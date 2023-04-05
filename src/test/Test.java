@@ -19,12 +19,13 @@ public class Test {
 					+ "\n4. Chinh sua danh sach"
 					+ "\n5. Tim kiem"
 					+ "\n6. Sap xep danh sach"
+					+ "\n7. Doc/ghi du lieu file"
 					+ "\n0. Exit"
 					+ "\n\nNhap lua chon: ");
 			while(true) {
 				try {
 					key = Integer.parseInt(sc.nextLine());
-					if (key < 0 || key > 6) {
+					if (key < 0 || key > 7) {
 						System.out.print("Lua chon khong phu hop. Hay lua chon lai: ");
 						continue;
 					}
