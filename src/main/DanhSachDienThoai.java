@@ -29,9 +29,9 @@ public class DanhSachDienThoai {
 	public void xoa(DienThoai dt) {
 		if (this.kiemTraTonTai(dt) == true) {
 			this.dsdt.remove(dt);
-			System.out.println("Xoá thành công!");
+			System.out.println("Xoa thanh cong!");
 		} else {
-			System.out.println("Sản phẩm không có trong danh sách!");
+			System.out.println("San pham khong co trong danh sach!");
 		}
 	}
 	

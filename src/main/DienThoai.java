@@ -1,8 +1,9 @@
 package main;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class DienThoai extends SanPham {
+public class DienThoai extends SanPham implements Serializable {
 	private String loaiDT;
 	Scanner sc = new Scanner(System.in);
 	public DienThoai() {
@@ -25,13 +26,13 @@ public class DienThoai extends SanPham {
 
 	@Override
 	public String toString() {
-		return "DienThoai [loaiDT=" + loaiDT + ", " + super.toString() + "]";
+		return "Dien thoai - " + super.toString() + ", loai dien thoai: " + this.loaiDT;
 	}
 
 	@Override
 	public void nhap() {
 		super.nhap();
-		System.out.print("Nhập loại điện thoại: ");
+		System.out.print("Nhap loai dien thoai: ");
 		this.loaiDT = sc.nextLine();
 	}
 }

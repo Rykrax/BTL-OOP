@@ -59,18 +59,18 @@ public class SanPham implements Serializable {
 	}
 	
 	public void nhap() {
-		System.out.print("Nhập tên sản phẩm: ");
+		System.out.print("Nhap ten san pham: ");
 		this.tenSP = sc.nextLine();
-		System.out.print("Nhập năm sản xuất: ");
+		System.out.print("Nhap nam san xuat: ");
 		this.namSX = Integer.parseInt(sc.nextLine());
-		System.out.print("Nhập số lượng: ");
+		System.out.print("Nhap so luong: ");
 		this.soLuong = Integer.parseInt(sc.nextLine());
-		System.out.print("Nhập giá: ");
+		System.out.print("Nhap gia: ");
 		this.coin = Integer.parseInt(sc.nextLine());
 	}
 
 	@Override
 	public String toString() {
-		return "SanPham [tenSP=" + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin) + "]";
+		return "SanPham: " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
 	}
 }

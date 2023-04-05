@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Test {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-//		DanhSachDienThoai dsdt = new DanhSachDienThoai();
-		int key;
+		DanhSachDienThoai dsdt = new DanhSachDienThoai();
+		int key, option;
 		
 		loop: while(true) {
 			System.out.print("==================MENU=================="
@@ -33,6 +33,42 @@ public class Test {
 				} catch (Exception e) {
 					System.out.println("Du lieu khong hop le! Hay lua chon lai: ");
 				}
+			}
+			switch(key) {
+				case 1:
+					
+					break;
+				case 2:
+					System.out.println("Ban muon nhap thong tin cua: "
+							+ "\n1.Dien thoai"
+							+ "\n2.Phu kien");
+					option = Integer.parseInt(sc.nextLine());
+					if (option == 1) {
+						int n;
+						System.out.print("Nhap so luong ban muon them: ");
+						n = Integer.parseInt(sc.nextLine());
+						for (int i = 0; i < n; i++) {
+							dsdt.them();
+						}
+					} else if (option == 2) {
+						
+					}
+					break;
+				case 3:
+					System.out.println("Chon danh sach muon xem:"
+							+ "\n1. Danh sach khach hang"
+							+ "\n2. Danh sach nhan vien"
+							+ "\n3. Danh sach dien thoai"
+							+ "\n4. Danh sach phu kien");
+					option = Integer.parseInt(sc.nextLine());
+					switch(option) {
+						case 1:
+						case 2:
+						case 3:
+							dsdt.hienDanhSach();
+						case 4:
+					}
+					break;
 			}
 		}
 	}
