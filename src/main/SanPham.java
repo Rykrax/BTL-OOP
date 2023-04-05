@@ -1,10 +1,11 @@
 package main;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class SanPham {
+public class SanPham implements Serializable {
 	private String tenSP;
 	private int namSX;
 	private int soLuong;
