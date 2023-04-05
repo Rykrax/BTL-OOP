@@ -44,6 +44,7 @@ Scanner sc= new Scanner (System.in);
         i++;
         if(i==sl) break;
         
+        
         }
     }
     public void hien()
