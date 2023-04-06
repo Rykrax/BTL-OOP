@@ -4,14 +4,17 @@
  */
 package main;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author Admin
  */
-public class NhanVien extends Person{
+public class NhanVien extends Person implements Serializable{
     private String manv;
+    private double hsl;
+    private final long lcb =2500000;
 
     public NhanVien() {
         super();
@@ -22,13 +25,24 @@ public class NhanVien extends Person{
         this.manv = manv;
     }
 
+    
     @Override
     public void nhap() {
         Scanner sc= new Scanner(System.in);
         super.nhap(); 
         System.out.print("Ma Nhan Vien : ");
         manv=sc.nextLine();
+        System.out.print("He so luong : ");
+        hsl=Double.parseDouble(sc.nextLine());
     }
-    
+    public double luong()
+    {
+        return hsl*lcb;
+    }
+
+    @Override
+    public String toString() {
+        return "NhanVien  "+super.toString()+" Ma nhan vien  "+manv+"  Luong  "+luong();
+    }
     
 }

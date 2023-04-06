@@ -5,14 +5,12 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class SanPham implements Serializable {
-	private String tenSP;
-	private int namSX;
-	private int soLuong;
-	private int coin;
-	Locale lc = new Locale("vi","VN");
-	NumberFormat numf = NumberFormat.getInstance(lc);
-	Scanner sc = new Scanner(System.in);
+public class SanPham implements Serializable{
+	protected String tenSP;
+	protected int namSX;
+	protected int soLuong;
+	protected int coin;
+	
 	
 	public SanPham() {
 		super();
@@ -34,22 +32,8 @@ public class SanPham implements Serializable {
 		this.tenSP = tenSP;
 	}
 	
-	public int getNamSX() {
-		return namSX;
-	}
 
-	public void setNamSX(int namSX) {
-		this.namSX = namSX;
-	}
-
-	public int getSoLuong() {
-		return soLuong;
-	}
-
-	public void setSoLuong(int soLuong) {
-		this.soLuong = soLuong;
-	}
-
+	
 	public int getCoin() {
 		return coin;
 	}
@@ -59,6 +43,7 @@ public class SanPham implements Serializable {
 	}
 	
 	public void nhap() {
+            Scanner sc = new Scanner(System.in);
 		System.out.print("Nhap ten san pham: ");
 		this.tenSP = sc.nextLine();
 		System.out.print("Nhap nam san xuat: ");
@@ -71,6 +56,9 @@ public class SanPham implements Serializable {
 
 	@Override
 	public String toString() {
+            Locale lc = new Locale("vi","VN");
+	NumberFormat numf = NumberFormat.getInstance(lc);
+	Scanner sc = new Scanner(System.in);
 		return "SanPham: " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
 	}
 }

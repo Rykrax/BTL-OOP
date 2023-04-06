@@ -25,8 +25,8 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class PhuKienBLL  {
-    List <PhuKien> lsp= new ArrayList<>();
+public class PhuKienBLL {
+    ArrayList <SanPham> lsp= new ArrayList<>();
 Scanner sc= new Scanner (System.in);
     public PhuKienBLL() {
     }
@@ -49,26 +49,26 @@ Scanner sc= new Scanner (System.in);
     }
     public void hien()
     {
-        for(PhuKien x: lsp)
+        for(SanPham x: lsp)
         {
             System.out.println(x.toString());
         }
     }
-    public PhuKien searchbyname()
+    public String searchbyname()
     {
         System.out.print("Nhap vao ten phu kien  : ");
         String sten=sc.nextLine();
       
-        for(PhuKien x:lsp)
+        for(SanPham x:lsp)
         {
             if(x.getTenSP().compareTo(sten)==0)
             {
-                return x;
+                return x.toString();
             }
             
         }
        
-        return null;
+        return "Khong co phu kien nhu the!";
        
     }
     public void rimu()
@@ -82,9 +82,9 @@ Scanner sc= new Scanner (System.in);
     }
     public void sxtheocoin()
     {
-          Collections.sort(lsp, new Comparator<PhuKien>(){
+          Collections.sort(lsp, new Comparator<SanPham>(){
               @Override
-              public int compare(PhuKien o1, PhuKien o2) {
+              public int compare(SanPham o1, SanPham o2) {
                   if(o1.getCoin()<o2.getCoin())
                   {
                       return -1;
@@ -96,49 +96,65 @@ Scanner sc= new Scanner (System.in);
     }
     public void ghifile() throws FileNotFoundException, IOException
     {
-        FileOutputStream fo =new FileOutputStream("PhuKien.dat");
+        FileOutputStream fo =new FileOutputStream("PhuKien2.bin");
         ObjectOutputStream obw = new ObjectOutputStream (fo);
         try {
           
-            for(PhuKien x: lsp)
-            {
-                obw.writeObject(x);
-            }
+        
+//                obw.writeObject(lsp);
+//                obw.flush();
+    for(SanPham x: lsp)
+    {
+        obw.writeObject(x);
+    }
+        
+        
+                
+              
+            System.out.println("ghi file thanh cong");
         } catch (IOException e)
                 {
                     System.out.print("File ko ton tai : \n");
                 }
-        finally{
-            System.out.println("Ghi file thanh cong ");
+         finally{
+            
             if(obw!=null) obw.close();
             if(fo!=null) fo.close();
-            
         }
+        
     }
     public void docfile() throws FileNotFoundException, IOException, ClassNotFoundException
     {
-        FileInputStream fi =new FileInputStream("PhuKien.dat");
+        FileInputStream fi =new FileInputStream("PhuKien2.bin");
         ObjectInputStream obi = new ObjectInputStream(fi);
       
         Object pk= null;
-       while(fi.available()>0)
+        try {
+              while(fi.available()>0)
        {
         
                pk=obi.readObject();
-               System.out.println(pk);
+               System.out.println(pk.toString());
        
        }
-        fi.close();
-        obi.close();
+        } catch (Exception e) {
+            System.out.println(" File khong ton tai ");
+        } finally {
+            fi.close();
+            obi.close();
+        }
+        
     }
 
    
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException  {
         PhuKienBLL a = new PhuKienBLL();
-      a.nhap();
-       a.hien();
-        a.ghifile();
-       a.docfile();
+         a.nhap();
+         System.out.println();
+         a.hien();  System.out.println();
+         
+      a.ghifile();
+            a.docfile();
        
     }
 }
