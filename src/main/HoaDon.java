@@ -55,7 +55,7 @@ public class HoaDon {
             {
                 case 1:
                 {
-                    sp=new DanhSachDienThoai().searchbyname();
+                    sp=new DanhSachDienThoai().searchByName();
                     break;
                 }
                 case 2: 

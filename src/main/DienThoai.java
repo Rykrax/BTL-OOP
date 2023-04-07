@@ -23,7 +23,6 @@ public class DienThoai extends SanPham implements Serializable {
 		this.loaiDT = loaiDT;
 	}
 	
-
 	@Override
 	public String toString() {
 		return "Dien thoai - " + super.toString() + ", loai dien thoai: " + this.loaiDT;
@@ -31,7 +30,7 @@ public class DienThoai extends SanPham implements Serializable {
 
 	@Override
 	public void nhap() {
-            Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 		super.nhap();
 		System.out.print("Nhap loai dien thoai: ");
 		this.loaiDT = sc.nextLine();

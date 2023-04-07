@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
 import java.io.Serializable;
@@ -12,28 +8,27 @@ import java.util.Scanner;
  * @author Admin
  */
 public class PhuKien  extends SanPham implements Serializable{
-    private String loaisp;
+    private String loaiSP;
 
     public PhuKien() {
         super();
     }
-    public PhuKien(String loaisp, String tenSP, int namSX, int soLuong, double coin) {
+    public PhuKien(String loaiSP, String tenSP, int namSX, int soLuong, double coin) {
         super(tenSP, namSX, soLuong, coin);
-        this.loaisp = loaisp;
+        this.loaiSP = loaiSP;
     }
+    
     @Override
-    public void nhap()
-    {
+    public void nhap() {
         Scanner sc= new Scanner (System.in);
-        
-        System.out.print("Loai phu kien : ");
-        loaisp=sc.nextLine();
         super.nhap();
+        System.out.print("Loai phu kien : ");
+        loaiSP = sc.nextLine();
     }
     
     @Override
     public String toString() {
-        return "PhuKien  "+"  Loai phu kien  "+loaisp+super.toString();
+        return "PhuKien - " + super.toString() + ", loai phu kien: " + this.loaiSP;
     }
     
 }

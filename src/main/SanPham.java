@@ -66,6 +66,6 @@ public String tinhgia()
             Locale lc = new Locale("vi","VN");
 	NumberFormat numf = NumberFormat.getInstance(lc);
 	Scanner sc = new Scanner(System.in);
-		return "   Ten SanPham  " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
+		return "Ten SanPham: " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
 	}
 }

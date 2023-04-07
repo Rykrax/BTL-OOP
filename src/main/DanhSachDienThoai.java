@@ -20,33 +20,44 @@ public class DanhSachDienThoai {
 		this.dsdt.add(dt);
 	}
 	
-	public DienThoai searchbyname() throws IOException {
-                        Scanner sc= new Scanner(System.in);
-                        System.out.print( "  Ten Dien thoai ");
-                        String tensp=sc.nextLine();
-                        for(DienThoai x:docfile())
-                        {
-                            if(x.getTenSP().compareTo(tensp)==0)
-                            {
-                                return x;
-                            }
-                        }
-	return null;	
+	public DienThoai searchByName () throws IOException {
+		Scanner sc= new Scanner(System.in);
+        System.out.print("Nhap ten dien thoai can tim: ");
+        String tensp=sc.nextLine();
+        for(DienThoai x:docfile()) {
+        	if(x.getTenSP().compareTo(tensp)==0) {
+        		return x;
+        		}
+            }
+        return null;	
 	}
 	
-	public void xoa(DienThoai dt) throws IOException {
-		 int size=dsdt.size();
-            
-            dsdt.remove(searchbyname());
-            
+	public void search() {
+		Scanner sc= new Scanner(System.in);
+        System.out.print("Nhap ten dien thoai can tim: ");
+        String name = sc.nextLine();
+        System.out.println("Danh sach dien thoai can tim: ");
+        for (DienThoai x : dsdt) {
+        	if (x.getTenSP().compareTo(name) == 0) {
+        		System.out.println(x.toString());
+        	}
+        }
+	}
+	public void xoa() throws IOException {
+		 int size=dsdt.size(); 
+            dsdt.remove(searchByName());
             if(size==dsdt.size())
                    System.out.print("Khong co ten nao nhu the trong danh sacch nen khong the xoa \n");
 	}
 	
 	public void hienDanhSach() {
+		if (dsdt.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
 			for (DienThoai x : dsdt) {
 				System.out.println(x.toString());
 			}
+		}
 	}
 	public void sapXepGiaTienGiamDan() {
 		Collections.sort(this.dsdt, new Comparator<DienThoai>() {
@@ -73,8 +84,7 @@ public class DanhSachDienThoai {
 			}
 		});
 	}
-        public void ghifile() throws FileNotFoundException, IOException
-        {
+    public void ghifile() throws FileNotFoundException, IOException {
             FileOutputStream f= new FileOutputStream("Dien Thoai2.dat");
             ObjectOutputStream oos = new ObjectOutputStream(f); 
             try {

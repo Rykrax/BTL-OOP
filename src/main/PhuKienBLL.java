@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
 import java.io.EOFException;
@@ -21,38 +17,25 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Admin
- */
 public class PhuKienBLL {
     ArrayList <PhuKien> lsp= new ArrayList<>();
-Scanner sc= new Scanner (System.in);
+    Scanner sc= new Scanner (System.in);
     public PhuKienBLL() {
     }
-    public  void nhap()
-    {
-        
-        System.out.print("so luong phu kien co trong cua hang : ");
-        int sl=Integer.parseInt(sc.nextLine());
-        int i=0;
-        while(true)
-        {
-            PhuKien a= new PhuKien();
-        a.nhap();
-        lsp.add(a);
-        i++;
-        if(i==sl) break;
-        
-        
-        }
+
+    public void them() {
+    	PhuKien pk = new PhuKien();
+    	pk.nhap();
+    	lsp.add(pk);
     }
-    public void hien()
-    {
-        for(SanPham x: lsp)
-        {
-            System.out.println(x.toString());
-        }
+    public void hienDanhSach() {
+    	if (lsp.isEmpty()) {
+    		System.out.println("Danh sach rong!");
+    	} else {
+    		for(SanPham x: lsp) {
+    			System.out.println(x.toString());
+    		}
+    	}
     }
     public void rimu() throws IOException, FileNotFoundException, ClassNotFoundException
     {
