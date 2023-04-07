@@ -19,23 +19,27 @@ import java.util.logging.Logger;
 
 public class PhuKienBLL {
     ArrayList <PhuKien> lsp= new ArrayList<>();
-    Scanner sc= new Scanner (System.in);
+   // Scanner sc= new Scanner (System.in);
     public PhuKienBLL() {
     }
 
     public void them() {
-    	PhuKien pk = new PhuKien();
+        Scanner sc= new Scanner(System.in);
+        System.out.print(" Nhap so luong san pham trong cua hang ");
+        int sl =Integer.parseInt(sc.nextLine());
+    	for(int i=0;i<sl;i++)
+        {
+            PhuKien pk = new PhuKien();
     	pk.nhap();
     	lsp.add(pk);
+        }
     }
-    public void hienDanhSach() {
-    	if (lsp.isEmpty()) {
-    		System.out.println("Danh sach rong!");
-    	} else {
-    		for(SanPham x: lsp) {
+    public void hienDanhSach() throws IOException, FileNotFoundException, ClassNotFoundException {
+    	
+    		for(SanPham x: docfile()) {
     			System.out.println(x.toString());
     		}
-    	}
+    	
     }
     public void rimu() throws IOException, FileNotFoundException, ClassNotFoundException
     {
@@ -77,7 +81,7 @@ public class PhuKienBLL {
         
                 
               
-            System.out.println("ghi file thanh cong");
+        //    System.out.println("ghi file thanh cong");
         } catch (IOException e)
                 {
                     System.out.print("File ko ton tai : \n");
@@ -113,6 +117,7 @@ public class PhuKienBLL {
     }
 public PhuKien searchbyname() throws IOException, FileNotFoundException, ClassNotFoundException
     {
+        Scanner sc= new Scanner(System.in);
         System.out.print("Nhap vao ten phu kien  : ");
         String sten=sc.nextLine();
       
@@ -131,16 +136,13 @@ public PhuKien searchbyname() throws IOException, FileNotFoundException, ClassNo
    
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException  {
         PhuKienBLL a = new PhuKienBLL();
-//         a.nhap();
-//        
-//         a.hien();  
-//       // System.out.println(a.searchbyname());
+//         a.them();
 //         a.ghifile();
-        //    a.docfile();
-            for(PhuKien x:a.docfile())
-            {
-                System.out.println(x.toString());
-            }
+        a.hienDanhSach();
+       // System.out.println(a.searchbyname());
+        
+       
+          
        
     }
 }

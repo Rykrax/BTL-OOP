@@ -5,6 +5,8 @@
 package main;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -42,7 +44,9 @@ public class NhanVien extends Person implements Serializable{
 
     @Override
     public String toString() {
-        return "NhanVien  "+super.toString()+" Ma nhan vien  "+manv+"  Luong  "+luong();
+          Locale lc = new Locale("vi","VN");
+	NumberFormat numf = NumberFormat.getInstance(lc);
+        return "NhanVien  "+super.toString()+" Ma nhan vien  "+manv+"  Luong  "+numf.format(luong());
     }
     
 }

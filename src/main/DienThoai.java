@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DienThoai extends SanPham implements Serializable {
 	private String loaiDT;
-	//Scanner sc = new Scanner(System.in);
+	
 	public DienThoai() {
 		super();
 	}

@@ -52,7 +52,7 @@ public class Person implements Serializable{
     @Override
     public String toString() {
         return  " Hoten " + hoten + " gt  " + gt + " cmnd  " + cmnd + " sodt  " + sodt + "  diachi  " + diachi ;
-    }
-    
+        }
+
     
 }

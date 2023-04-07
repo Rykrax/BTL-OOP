@@ -55,9 +55,9 @@ public class KhachHangBLL {
        
         
     }
-    public void hien()
+    public void hien() throws IOException
     {
-        for(KhachHang x:lkh)
+        for(KhachHang x:docfile())
         {
             System.out.println(x.toString());
         }
@@ -88,7 +88,7 @@ public class KhachHangBLL {
            }
             System.out.println("  ghi file succed ");
         } catch (Exception e) {
-            System.out.println("Khong the ghi file ");
+            System.out.println(" Khong the ghi file ");
         } finally {
             if(fo!=null) fo.close();
             if(oos!=null) oos.close();
@@ -107,7 +107,7 @@ public class KhachHangBLL {
                 kq.add(nv);
                 
             }
-            System.out.println("Doc File thanh cong ");
+           // System.out.println("Doc File thanh cong ");
         } catch (Exception e) {
             System.out.println("File khong ton tai : ");
             
@@ -119,13 +119,10 @@ public class KhachHangBLL {
     }
     public static void main(String[] args) throws IOException {
         KhachHangBLL a= new KhachHangBLL();
-//       a.themkh();
-//       a.hien();
-//       a.ghifile();
-       for(KhachHang x: a.docfile())
-       {
-           System.out.println(x.toString());
-       }
+//       a.themkh();  a.ghifile();
+       a.hien();
+     
+     
        
         
     }

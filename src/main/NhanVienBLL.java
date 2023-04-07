@@ -37,12 +37,11 @@ public class NhanVienBLL {
         if(i==sl) break;
     }
     }
-    public void hien()
+    public void hien() throws IOException
     {
-        Iterator it = lnv.iterator();
-        while(it.hasNext())
+        for(NhanVien x: docfile())
         {
-            System.out.println(it.next().toString());
+            System.out.println(x.toString());
         }
     }
     public NhanVien searchbyname() throws IOException
@@ -90,10 +89,10 @@ public class NhanVienBLL {
             while(fi.available()>0)
             {
                 nv=(NhanVien)ooi.readObject();
-                System.out.println(nv);
+                kq.add(nv);
                 
             }
-            System.out.println("Doc File thanh cong ");
+           // System.out.println("Doc File thanh cong ");
         } catch (Exception e) {
             System.out.println("File khong ton tai : ");
             
@@ -105,10 +104,11 @@ public class NhanVienBLL {
     }
     public static void main(String[] args) throws IOException {
         NhanVienBLL a= new NhanVienBLL();
-        a.nhap();
-        a.hien();
-        a.ghifile();
-        a.docfile();
+//        a.nhap();
+//        a.ghifile();
+       a.hien();
+        
+        
         
     }
     

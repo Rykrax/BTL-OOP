@@ -15,9 +15,15 @@ public class DanhSachDienThoai {
 	 ArrayList<DienThoai> dsdt=new ArrayList<>();
 	
 	public void them() {
-		DienThoai dt = new DienThoai();
+		Scanner sc= new Scanner(System.in);
+                System.out.print(" Nhap so luong  dien thoai co trong cua hang ");
+                int sl =Integer.parseInt(sc.nextLine());
+                for(int i=0;i<sl;i++)
+                {
+                    DienThoai dt = new DienThoai();
 		dt.nhap();
 		this.dsdt.add(dt);
+                }
 	}
 	
 	public DienThoai searchByName () throws IOException {
@@ -32,17 +38,7 @@ public class DanhSachDienThoai {
         return null;	
 	}
 	
-	public void search() {
-		Scanner sc= new Scanner(System.in);
-        System.out.print("Nhap ten dien thoai can tim: ");
-        String name = sc.nextLine();
-        System.out.println("Danh sach dien thoai can tim: ");
-        for (DienThoai x : dsdt) {
-        	if (x.getTenSP().compareTo(name) == 0) {
-        		System.out.println(x.toString());
-        	}
-        }
-	}
+	
 	public void xoa() throws IOException {
 		 int size=dsdt.size(); 
             dsdt.remove(searchByName());
@@ -50,15 +46,14 @@ public class DanhSachDienThoai {
                    System.out.print("Khong co ten nao nhu the trong danh sacch nen khong the xoa \n");
 	}
 	
-	public void hienDanhSach() {
-		if (dsdt.isEmpty()) {
-			System.out.println("Danh sach rong!");
-		} else {
-			for (DienThoai x : dsdt) {
+	public void hienDanhSach() throws IOException {
+		
+		
+			for (DienThoai x : docfile()) {
 				System.out.println(x.toString());
 			}
 		}
-	}
+	
 	public void sapXepGiaTienGiamDan() {
 		Collections.sort(this.dsdt, new Comparator<DienThoai>() {
 			@Override
@@ -92,7 +87,7 @@ public class DanhSachDienThoai {
                 {
                     oos.writeObject(x);
                 }
-                System.out.println("Ghi File succed ");
+             //   System.out.println("Ghi File succed ");
             } catch (Exception e) {
                 System.out.println("Ghi File loi ");
             } finally {
@@ -115,24 +110,19 @@ public class DanhSachDienThoai {
                 }
             } catch (Exception e) {
                 System.out.println(" File khong ton tai : ");
-                return null;
+                //return null;
             } finally {
-                       if(ooi!=null) ooi.close();
-            if(fi!=null) fi.close();
+                      ooi.close();
+     fi.close();
             }
             return kq;
         }
         public static void main(String[] args) throws IOException ,FileNotFoundException{
         DanhSachDienThoai a= new DanhSachDienThoai();
-        for(int i=0;i<1;i++)
-        {
-            a.them();
-        }
+      
+//           a.them();
+//        a.ghifile();
         a.hienDanhSach();
-        a.ghifile();
-        for(DienThoai x:a.docfile())
-        {
-            System.out.println(x.toString());
-        }
+//    
     }
 }

@@ -57,10 +57,10 @@ public class SanPham implements Serializable{
 		System.out.print("Nhap gia: ");
 		this.coin = Integer.parseInt(sc.nextLine());
 	}
-public String tinhgia()
-    {
-        return"tong gia thanh cua san pham la : "+soLuong*coin;
-    }
+//public String tinhgia()
+//    {
+//        return"tong gia thanh cua san pham la : "+soLuong*coin;
+//    }
 	@Override
 	public String toString() {
             Locale lc = new Locale("vi","VN");
