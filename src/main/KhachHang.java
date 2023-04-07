@@ -6,10 +6,6 @@ package main;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Admin
- */
 public class KhachHang  extends Person{
     private String makh;
 
@@ -22,17 +18,25 @@ public class KhachHang  extends Person{
         this.makh = makh;
     }
 
+    public void setMakh(String makh) {
+        this.makh = makh;
+    }
+
+    public String getMakh() {
+        return makh;
+    }
+    
+
     @Override
     public void nhap() {
         Scanner sc= new Scanner(System.in);
         super.nhap(); 
-        System.out.print(" Ma Khach Hang : ");
-        makh=sc.nextLine();
+        
     }
 
     @Override
     public String toString() {
-        return "KhachHang   "+super.toString()+" Ma khach hang "+makh;
+        return "KhachHang   "+" Ma khach hang "+makh+super.toString();
     }
     
     

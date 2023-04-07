@@ -20,7 +20,7 @@ import java.util.Scanner;
  * @author Admin
  */
 public class NhanVienBLL {
-    ArrayList<Person> lnv= new ArrayList<>();
+    ArrayList<NhanVien> lnv= new ArrayList<>();
     public void nhap()
     {
        Scanner sc = new Scanner (System.in);
@@ -45,20 +45,20 @@ public class NhanVienBLL {
             System.out.println(it.next().toString());
         }
     }
-    public String searchbyname()
+    public NhanVien searchbyname() throws IOException
     {
         Scanner sc= new Scanner (System.in);
-        System.out.print(" ten nhan vien ban muon tim   : ");
+        System.out.print(" ten nhan vien    : ");
         String sten=sc.nextLine();
    
-        for(Person x: lnv )
+        for(NhanVien x: docfile() )
         {
             if(x.getHoten().compareTo(sten)==0)
             {
-                return x.toString();
+                return x;
             }
         }
-        return "Khong co nhan vien do trong cua hang ";
+        return null;
         
       
     }
@@ -67,7 +67,7 @@ public class NhanVienBLL {
         FileOutputStream fo= new FileOutputStream("NhanVien.dat");
         ObjectOutputStream oos = new ObjectOutputStream(fo); 
         try {
-           for(Person x : lnv)
+           for(Person x : lnv)//lua ghi vao file laf lop cha
            {
                oos.writeObject(x);
            }
@@ -80,15 +80,16 @@ public class NhanVienBLL {
         }
        
     }
-    public void docfile() throws FileNotFoundException, IOException
+    public ArrayList<NhanVien> docfile() throws FileNotFoundException, IOException
     {
         FileInputStream fi =new FileInputStream("NhanVien.dat");
         ObjectInputStream ooi= new ObjectInputStream(fi);
-        Object nv=null;
+        ArrayList<NhanVien> kq= new ArrayList<>();
+        NhanVien nv=null;
         try {
             while(fi.available()>0)
             {
-                nv=ooi.readObject();
+                nv=(NhanVien)ooi.readObject();
                 System.out.println(nv);
                 
             }
@@ -100,6 +101,7 @@ public class NhanVienBLL {
             fi.close();
             ooi.close();
         }
+        return kq;
     }
     public static void main(String[] args) throws IOException {
         NhanVienBLL a= new NhanVienBLL();

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  * @author Admin
  */
 public class PhuKienBLL {
-    ArrayList <SanPham> lsp= new ArrayList<>();
+    ArrayList <PhuKien> lsp= new ArrayList<>();
 Scanner sc= new Scanner (System.in);
     public PhuKienBLL() {
     }
@@ -54,24 +54,7 @@ Scanner sc= new Scanner (System.in);
             System.out.println(x.toString());
         }
     }
-    public String searchbyname()
-    {
-        System.out.print("Nhap vao ten phu kien  : ");
-        String sten=sc.nextLine();
-      
-        for(SanPham x:lsp)
-        {
-            if(x.getTenSP().compareTo(sten)==0)
-            {
-                return x.toString();
-            }
-            
-        }
-       
-        return "Khong co phu kien nhu the!";
-       
-    }
-    public void rimu()
+    public void rimu() throws IOException, FileNotFoundException, ClassNotFoundException
     {
         int size=lsp.size();
             
@@ -103,7 +86,7 @@ Scanner sc= new Scanner (System.in);
         
 //                obw.writeObject(lsp);
 //                obw.flush();
-    for(SanPham x: lsp)
+    for(PhuKien x: lsp)
     {
         obw.writeObject(x);
     }
@@ -123,18 +106,18 @@ Scanner sc= new Scanner (System.in);
         }
         
     }
-    public void docfile() throws FileNotFoundException, IOException, ClassNotFoundException
+    public ArrayList<PhuKien> docfile() throws FileNotFoundException, IOException, ClassNotFoundException
     {
         FileInputStream fi =new FileInputStream("PhuKien2.bin");
         ObjectInputStream obi = new ObjectInputStream(fi);
-      
-        Object pk= null;
+      ArrayList<PhuKien> kp= new ArrayList<>();
+        PhuKien pk= null;
         try {
               while(fi.available()>0)
        {
         
-               pk=obi.readObject();
-               System.out.println(pk.toString());
+               pk=(PhuKien)obi.readObject();
+               kp.add(pk);
        
        }
         } catch (Exception e) {
@@ -143,18 +126,38 @@ Scanner sc= new Scanner (System.in);
             fi.close();
             obi.close();
         }
-        
+        return kp;
     }
-
+public PhuKien searchbyname() throws IOException, FileNotFoundException, ClassNotFoundException
+    {
+        System.out.print("Nhap vao ten phu kien  : ");
+        String sten=sc.nextLine();
+      
+        for(PhuKien x:docfile())
+        {
+            if(x.getTenSP().compareTo(sten)==0)
+            {
+                return x;
+            }
+            
+        }
+       
+        return null;
+       
+    }
    
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException  {
         PhuKienBLL a = new PhuKienBLL();
-         a.nhap();
-         System.out.println();
-         a.hien();  System.out.println();
-         
-      a.ghifile();
-            a.docfile();
+//         a.nhap();
+//        
+//         a.hien();  
+//       // System.out.println(a.searchbyname());
+//         a.ghifile();
+        //    a.docfile();
+            for(PhuKien x:a.docfile())
+            {
+                System.out.println(x.toString());
+            }
        
     }
 }

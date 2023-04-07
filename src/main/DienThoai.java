@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DienThoai extends SanPham implements Serializable {
 	private String loaiDT;
-	Scanner sc = new Scanner(System.in);
+	//Scanner sc = new Scanner(System.in);
 	public DienThoai() {
 		super();
 	}
@@ -31,6 +31,7 @@ public class DienThoai extends SanPham implements Serializable {
 
 	@Override
 	public void nhap() {
+            Scanner sc = new Scanner(System.in);
 		super.nhap();
 		System.out.print("Nhap loai dien thoai: ");
 		this.loaiDT = sc.nextLine();

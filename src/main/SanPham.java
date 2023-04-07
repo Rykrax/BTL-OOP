@@ -9,14 +9,14 @@ public class SanPham implements Serializable{
 	protected String tenSP;
 	protected int namSX;
 	protected int soLuong;
-	protected int coin;
+	protected double coin;
 	
 	
 	public SanPham() {
 		super();
 	}
 
-	public SanPham(String tenSP, int namSX, int soLuong, int coin) {
+	public SanPham(String tenSP, int namSX, int soLuong, double coin) {
 		super();
 		this.tenSP = tenSP;
 		this.namSX = namSX;
@@ -31,14 +31,18 @@ public class SanPham implements Serializable{
 	public void setTenSP(String tenSP) {
 		this.tenSP = tenSP;
 	}
+
+    public int getSoLuong() {
+        return soLuong;
+    }
 	
 
 	
-	public int getCoin() {
+	public double getCoin() {
 		return coin;
 	}
 
-	public void setCoin(int coin) {
+	public void setCoin(double coin) {
 		this.coin = coin;
 	}
 	
@@ -53,12 +57,15 @@ public class SanPham implements Serializable{
 		System.out.print("Nhap gia: ");
 		this.coin = Integer.parseInt(sc.nextLine());
 	}
-
+public String tinhgia()
+    {
+        return"tong gia thanh cua san pham la : "+soLuong*coin;
+    }
 	@Override
 	public String toString() {
             Locale lc = new Locale("vi","VN");
 	NumberFormat numf = NumberFormat.getInstance(lc);
 	Scanner sc = new Scanner(System.in);
-		return "SanPham: " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
+		return "   Ten SanPham  " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
 	}
 }

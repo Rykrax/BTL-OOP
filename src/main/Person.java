@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Admin
  */
 public class Person implements Serializable{
-    private String hoten;
+     private String hoten;
     private String gt;
     private String cmnd;
     private String sodt;

@@ -17,7 +17,7 @@ public class PhuKien  extends SanPham implements Serializable{
     public PhuKien() {
         super();
     }
-    public PhuKien(String loaisp, String tenSP, int namSX, int soLuong, int coin) {
+    public PhuKien(String loaisp, String tenSP, int namSX, int soLuong, double coin) {
         super(tenSP, namSX, soLuong, coin);
         this.loaisp = loaisp;
     }
@@ -30,7 +30,7 @@ public class PhuKien  extends SanPham implements Serializable{
         loaisp=sc.nextLine();
         super.nhap();
     }
-
+    
     @Override
     public String toString() {
         return "PhuKien  "+"  Loai phu kien  "+loaisp+super.toString();

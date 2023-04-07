@@ -1,20 +1,18 @@
 package main;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class DanhSachDienThoai {
-	private ArrayList<DienThoai> dsdt;
-
-	public DanhSachDienThoai() {
-		this.dsdt = new ArrayList<DienThoai>();
-	}
-
-	public DanhSachDienThoai(ArrayList<DienThoai> dsdt) {
-		super();
-		this.dsdt = dsdt;
-	}
+	 ArrayList<DienThoai> dsdt=new ArrayList<>();
 	
 	public void them() {
 		DienThoai dt = new DienThoai();
@@ -22,24 +20,28 @@ public class DanhSachDienThoai {
 		this.dsdt.add(dt);
 	}
 	
-	public boolean kiemTraTonTai(DienThoai dt) {
-		return this.dsdt.contains(dt);
+	public DienThoai searchbyname() throws IOException {
+                        Scanner sc= new Scanner(System.in);
+                        System.out.print( "  Ten Dien thoai ");
+                        String tensp=sc.nextLine();
+                        for(DienThoai x:docfile())
+                        {
+                            if(x.getTenSP().compareTo(tensp)==0)
+                            {
+                                return x;
+                            }
+                        }
+	return null;	
 	}
 	
-	public void xoa(DienThoai dt) {
-		if (this.kiemTraTonTai(dt) == true) {
-			this.dsdt.remove(dt);
-			System.out.println("Xoa thanh cong!");
-		} else {
-			System.out.println("San pham khong co trong danh sach!");
-		}
+	public void xoa(DienThoai dt) throws IOException {
+		 int size=dsdt.size();
+            
+            dsdt.remove(searchbyname());
+            
+            if(size==dsdt.size())
+                   System.out.print("Khong co ten nao nhu the trong danh sacch nen khong the xoa \n");
 	}
-	
-//	public void search(DienThoai dt) {
-//		for (DienThoai x : dsdt) {
-//			if (x )
-//		}
-//	}
 	
 	public void hienDanhSach() {
 			for (DienThoai x : dsdt) {
@@ -71,4 +73,56 @@ public class DanhSachDienThoai {
 			}
 		});
 	}
+        public void ghifile() throws FileNotFoundException, IOException
+        {
+            FileOutputStream f= new FileOutputStream("Dien Thoai2.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(f); 
+            try {
+                for(SanPham x: dsdt)
+                {
+                    oos.writeObject(x);
+                }
+                System.out.println("Ghi File succed ");
+            } catch (Exception e) {
+                System.out.println("Ghi File loi ");
+            } finally {
+                 if(oos!=null) oos.close();
+            if(f!=null) f.close();
+            }
+        }
+        public ArrayList<DienThoai> docfile() throws FileNotFoundException, IOException
+        {
+            FileInputStream fi = new FileInputStream("Dien Thoai2.dat");
+            ObjectInputStream ooi = new ObjectInputStream(fi); 
+            ArrayList<DienThoai> kq = new ArrayList<>();
+            DienThoai dt=null;
+            
+            try {
+                while(fi.available()>0)
+                {
+                    dt=(DienThoai)ooi.readObject();
+                    kq.add(dt);
+                }
+            } catch (Exception e) {
+                System.out.println(" File khong ton tai : ");
+                return null;
+            } finally {
+                       if(ooi!=null) ooi.close();
+            if(fi!=null) fi.close();
+            }
+            return kq;
+        }
+        public static void main(String[] args) throws IOException ,FileNotFoundException{
+        DanhSachDienThoai a= new DanhSachDienThoai();
+        for(int i=0;i<1;i++)
+        {
+            a.them();
+        }
+        a.hienDanhSach();
+        a.ghifile();
+        for(DienThoai x:a.docfile())
+        {
+            System.out.println(x.toString());
+        }
+    }
 }
