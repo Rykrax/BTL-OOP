@@ -10,8 +10,8 @@ public class SanPham implements Serializable{
 	protected int namSX;
 	protected int soLuong;
 	protected double coin;
-	
-	
+
+
 	public SanPham() {
 		super();
 	}
@@ -32,12 +32,14 @@ public class SanPham implements Serializable{
 		this.tenSP = tenSP;
 	}
 
-    public int getSoLuong() {
-        return soLuong;
-    }
-	
+	public int getSoLuong() {
+		return soLuong;
+	}
 
-	
+	public void updateSoLuong(int cnt) {
+		this.soLuong += cnt;
+	}
+
 	public double getCoin() {
 		return coin;
 	}
@@ -45,11 +47,9 @@ public class SanPham implements Serializable{
 	public void setCoin(double coin) {
 		this.coin = coin;
 	}
-	
+
 	public void nhap() {
-            Scanner sc = new Scanner(System.in);
-		System.out.print("Nhap ten san pham: ");
-		this.tenSP = sc.nextLine();
+		Scanner sc = new Scanner(System.in);
 		System.out.print("Nhap nam san xuat: ");
 		this.namSX = Integer.parseInt(sc.nextLine());
 		System.out.print("Nhap so luong: ");
@@ -57,15 +57,12 @@ public class SanPham implements Serializable{
 		System.out.print("Nhap gia: ");
 		this.coin = Integer.parseInt(sc.nextLine());
 	}
-//public String tinhgia()
-//    {
-//        return"tong gia thanh cua san pham la : "+soLuong*coin;
-//    }
+
 	@Override
 	public String toString() {
-            Locale lc = new Locale("vi","VN");
-	NumberFormat numf = NumberFormat.getInstance(lc);
-	Scanner sc = new Scanner(System.in);
+		Locale lc = new Locale("vi","VN");
+		NumberFormat numf = NumberFormat.getInstance(lc);
+		Scanner sc = new Scanner(System.in);
 		return "Ten SanPham: " + tenSP + ", namSX=" + namSX + ", soLuong=" + soLuong + ", coin=" + numf.format(coin);
 	}
 }

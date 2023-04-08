@@ -1,18 +1,25 @@
 package test;
 
-import main.DanhSachDienThoai;
-import main.DienThoai;
-import main.PhuKienBLL;
-
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import main.DienThoaiBLL;
+import main.KhachHangBLL;
+import main.NhanVienBLL;
+import main.PhuKienBLL;
+import main.KhachHang;
+import main.NhanVien;
+import main.DienThoai;
+import main.PhuKien;
+import java.io.IOException;
 
 public class Test {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
-		DanhSachDienThoai dsdt = new DanhSachDienThoai();
+		DienThoaiBLL dsdt = new DienThoaiBLL();
 		PhuKienBLL dspk = new PhuKienBLL();
-		int key, option, m;
+		KhachHangBLL dskh = new KhachHangBLL();
+		NhanVienBLL dsnv = new NhanVienBLL();
+		int key, option, n, m;
 		
 		loop: while(true) {
 			System.out.print("==================MENU=================="
@@ -39,21 +46,38 @@ public class Test {
 			}
 			switch(key) {
 				case 1:
-					
+					System.out.println("Ban muon nhap thong tin cua: "
+							+ "\n1.Khach hang"
+							+ "\n2.Nhan vien");
+					option = Integer.parseInt(sc.nextLine());
+					if (option == 1) {
+						System.out.print("Nhap so luong ban muon them: ");
+						n = Integer.parseInt(sc.nextLine());
+						for (int i = 0; i < n; i++) {
+							dskh.them();
+						}
+					} else if (option == 2) {
+						System.out.print("So luong nhan vien trong cua hang: ");
+						n = Integer.parseInt(sc.nextLine());
+						for (int i = 0; i < n; i++) {
+							dsnv.them();
+						}
+					}
 					break;
 				case 2:
 					System.out.println("Ban muon nhap thong tin cua: "
 							+ "\n1.Dien thoai"
 							+ "\n2.Phu kien");
 					option = Integer.parseInt(sc.nextLine());
-					int n;
-					System.out.print("Nhap so luong ban muon them: ");
-					n = Integer.parseInt(sc.nextLine());
 					if (option == 1) {
+						System.out.print("Nhap so luong dien thoai co trong cua hang: ");
+						n = Integer.parseInt(sc.nextLine());
 						for (int i = 0; i < n; i++) {
 							dsdt.them();
 						}
 					} else if (option == 2) {
+						System.out.print("Nhap so luong phu kien co trong cua hang: ");
+						n = Integer.parseInt(sc.nextLine());
 						for (int i = 0; i < n; i++) {
 							dspk.them();
 						}
@@ -68,12 +92,20 @@ public class Test {
 					option = Integer.parseInt(sc.nextLine());
 					switch(option) {
 						case 1:
+							ArrayList<KhachHang> tmp1 = (ArrayList<KhachHang>) dskh.dskh;
+							dskh.hienDanhSach(tmp1);
+							break;
 						case 2:
+							ArrayList<NhanVien> tmp2 = dsnv.dsnv;
+							dsnv.hienDanhSach(tmp2);
+							break;
 						case 3:
-							dsdt.hienDanhSach();
+							ArrayList<DienThoai> tmp3 = dsdt.dsdt;
+							dsdt.hienDanhSach(tmp3);
 							break;
 						case 4:
-							dspk.hienDanhSach();
+							ArrayList<PhuKien> tmp4 = dspk.dspk;
+ 							dspk.hienDanhSach(tmp4);
 							break;
 					}
 					break;
@@ -110,7 +142,7 @@ public class Test {
 						case 1:
 						case 2:
 						case 3:
-							dsdt.search();
+//							dsdt.search();
 						case 4:
 					}
 					break;

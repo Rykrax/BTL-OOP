@@ -5,14 +5,12 @@ import java.util.Scanner;
 
 public class DienThoai extends SanPham implements Serializable {
 	private String loaiDT;
-	
 	public DienThoai() {
 		super();
 	}
-
-	public DienThoai(String tenSP,int namSX, int soLuong, int coin, String loaiDT) {
-		super(tenSP, namSX, soLuong, coin);
-		this.loaiDT = loaiDT;
+	
+	public DienThoai(String name) {
+		this.tenSP = name;
 	}
 
 	public String getLoaiDT() {

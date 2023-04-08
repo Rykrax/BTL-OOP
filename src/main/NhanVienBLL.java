@@ -20,97 +20,96 @@ import java.util.Scanner;
  * @author Admin
  */
 public class NhanVienBLL {
-    ArrayList<NhanVien> lnv= new ArrayList<>();
-    public void nhap()
-    {
-       Scanner sc = new Scanner (System.in);
-    
-        System.out.print(" So luong nhan vien trong cua hang  : ");
-        int sl=Integer.parseInt(sc.nextLine());
-        int i=0;
-        while(true)
-        {
-            NhanVien a= new NhanVien();
-        a.nhap();
-        lnv.add(a);
-        i++;
-        if(i==sl) break;
-    }
-    }
-    public void hien() throws IOException
-    {
-        for(NhanVien x: docfile())
-        {
-            System.out.println(x.toString());
-        }
-    }
-    public NhanVien searchbyname() throws IOException
-    {
-        Scanner sc= new Scanner (System.in);
-        System.out.print(" ten nhan vien    : ");
-        String sten=sc.nextLine();
-   
-        for(NhanVien x: docfile() )
-        {
-            if(x.getHoten().compareTo(sten)==0)
-            {
-                return x;
-            }
-        }
-        return null;
-        
-      
-    }
-    public void ghifile() throws FileNotFoundException, IOException
-    {
-        FileOutputStream fo= new FileOutputStream("NhanVien.dat");
-        ObjectOutputStream oos = new ObjectOutputStream(fo); 
-        try {
-           for(Person x : lnv)//lua ghi vao file laf lop cha
-           {
-               oos.writeObject(x);
-           }
-            System.out.println("  ghi file succed ");
-        } catch (Exception e) {
-            System.out.println("Khong the ghi file ");
-        } finally {
-            if(fo!=null) fo.close();
-            if(oos!=null) oos.close();
-        }
-       
-    }
-    public ArrayList<NhanVien> docfile() throws FileNotFoundException, IOException
-    {
-        FileInputStream fi =new FileInputStream("NhanVien.dat");
-        ObjectInputStream ooi= new ObjectInputStream(fi);
-        ArrayList<NhanVien> kq= new ArrayList<>();
-        NhanVien nv=null;
-        try {
-            while(fi.available()>0)
-            {
-                nv=(NhanVien)ooi.readObject();
-                kq.add(nv);
-                
-            }
-           // System.out.println("Doc File thanh cong ");
-        } catch (Exception e) {
-            System.out.println("File khong ton tai : ");
-            
-        } finally {
-            fi.close();
-            ooi.close();
-        }
-        return kq;
-    }
-    public static void main(String[] args) throws IOException {
-        NhanVienBLL a= new NhanVienBLL();
-//        a.nhap();
-//        a.ghifile();
-       a.hien();
-        
-        
-        
-    }
-    
-    
+	public ArrayList<NhanVien> dsnv = new ArrayList<>();
+
+	public boolean check(String s) {
+		for(NhanVien x : dsnv) {
+			if(x.getMaNV().compareTo(s)==0)
+				return true;
+		}
+		return false;
+	}
+	public void them() {
+		Scanner sc = new Scanner(System.in); 
+		String maNV; 
+		System.out.print("Ma nhan vien: ");
+		maNV = sc.nextLine();
+		while(true) {
+			if (check(maNV)) {
+				System.out.print("Ma nhan vien da ton tai! ");
+			} else break;
+			System.out.print("Nhap lai ma nhan vien: ");
+			maNV = sc.nextLine();
+		}
+		NhanVien nv = new NhanVien(maNV);
+		nv.nhap();
+		dsnv.add(nv);
+	}
+	public void hienDanhSach(ArrayList<NhanVien> dsnv) throws IOException {
+		if (dsnv.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
+			for(NhanVien x : dsnv) {
+				System.out.println(x.toString());
+			}
+		}
+	}
+	public NhanVien searchbyname() throws IOException
+	{
+		Scanner sc= new Scanner (System.in);
+		System.out.print(" ten nhan vien    : ");
+		String sten=sc.nextLine();
+
+		for(NhanVien x: docfile() )
+		{
+			if(x.getHoten().compareTo(sten)==0)
+			{
+				return x;
+			}
+		}
+		return null;
+
+
+	}
+	public void ghifile() throws FileNotFoundException, IOException
+	{
+		FileOutputStream fo= new FileOutputStream("NhanVien.dat");
+		ObjectOutputStream oos = new ObjectOutputStream(fo); 
+		try {
+			for(Person x : dsnv)//lua ghi vao file laf lop cha
+			{
+				oos.writeObject(x);
+			}
+			System.out.println("  ghi file succed ");
+		} catch (Exception e) {
+			System.out.println("Khong the ghi file ");
+		} finally {
+			if(fo!=null) fo.close();
+			if(oos!=null) oos.close();
+		}
+
+	}
+	public ArrayList<NhanVien> docfile() throws FileNotFoundException, IOException
+	{
+		FileInputStream fi =new FileInputStream("NhanVien.dat");
+		ObjectInputStream ooi= new ObjectInputStream(fi);
+		ArrayList<NhanVien> kq= new ArrayList<>();
+		NhanVien nv=null;
+		try {
+			while(fi.available()>0)
+			{
+				nv=(NhanVien)ooi.readObject();
+				kq.add(nv);
+
+			}
+			// System.out.println("Doc File thanh cong ");
+		} catch (Exception e) {
+			System.out.println("File khong ton tai : ");
+
+		} finally {
+			fi.close();
+			ooi.close();
+		}
+		return kq;
+	}
 }

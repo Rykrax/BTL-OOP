@@ -1,46 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
 import java.util.Scanner;
 
-public class KhachHang  extends Person{
-    private String makh;
+public class KhachHang extends Person{
+    private String maKH;
 
     public KhachHang() {
         super();
     }
-
-    public KhachHang(String makh, String hoten, String gt, String cmnd, String sodt, String diachi) {
+    
+    public KhachHang(String maKH) {
+    	this.maKH = maKH;
+    }
+    public KhachHang(String maKH, String hoten, String gt, String cmnd, String sodt, String diachi) {
         super(hoten, gt, cmnd, sodt, diachi);
-        this.makh = makh;
+        this.maKH = maKH;
     }
 
-    public void setMakh(String makh) {
-        this.makh = makh;
+    public void setMakh(String maKH) {
+        this.maKH = maKH;
     }
 
     public String getMakh() {
-        return makh;
+        return maKH;
     }
     
-
     @Override
     public void nhap() {
         Scanner sc= new Scanner(System.in);
         super.nhap(); 
-        
     }
 
     @Override
     public String toString() {
-        return "KhachHang   "+" Ma khach hang "+makh+super.toString();
+        return "KhachHang - " + super.toString() + ", ma khach hang: " + this.maKH;
     }
-    
-    
-    
-    
-    
 }
