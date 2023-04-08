@@ -15,22 +15,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class KhachHangBLL {
-	public List<KhachHang> dskh= new ArrayList<>();
-	public boolean check(String s) {
-		for(KhachHang x : dskh) {
-			if(x.getMakh().compareTo(s)==0)
-				return true;
+	public ArrayList<KhachHang> dskh= new ArrayList<>();
+	public int check(String id) {
+		for (int i = 0; i < dskh.size(); i++) {
+			if (dskh.get(i).getMaKH().compareTo(id) == 0) {
+				return i;
+			}
 		}
-		return false;
+		return -1;
 	}
-
 	public void them() {
 		Scanner sc = new Scanner(System.in); 
 		String maKH; 
 		System.out.print("Ma khach hang: ");
 		maKH = sc.nextLine();
 		while(true) {
-			if (check(maKH)) {
+			if (check(maKH) != -1) {
 				System.out.print("Ma khach hang da ton tai! ");
 			} else break;
 			System.out.print("Nhap lai ma khach hang: ");
@@ -49,21 +49,8 @@ public class KhachHangBLL {
 			}
 		}
 	}
-	public KhachHang searchbyma() throws IOException
-	{
-		Scanner sc= new Scanner (System.in);
-		System.out.print(" Nhap ma khach hang  ");
-		String makh=sc.nextLine();
-		for(KhachHang x:docfile())
-		{
-			if(x.getMakh().compareTo(makh)==0)
-			{
-				return x;
-			}
-		}
-		return null;
 
-	} 
+//	public void 
 	public void ghifile() throws FileNotFoundException, IOException
 	{
 		FileOutputStream fo= new FileOutputStream("KhachHang.dat");
@@ -103,14 +90,5 @@ public class KhachHangBLL {
 			ooi.close();
 		}
 		return kq;
-	}
-	public static void main(String[] args) throws IOException {
-		KhachHangBLL a= new KhachHangBLL();
-		//       a.themkh();  a.ghifile();
-		//       a.hien();
-
-
-
-
 	}
 }

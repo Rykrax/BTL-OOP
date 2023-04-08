@@ -59,14 +59,29 @@ public class PhuKienBLL {
 			}
 		}
 	}
-	public void rimu() throws IOException, FileNotFoundException, ClassNotFoundException
-	{
-		int size=dspk.size();
+	public void xoa() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Nhap ten muon xoa: ");
+		String name = sc.nextLine();
+		int index = check(name);
+		if (index != -1) {
+			dspk.remove(index);
+			System.out.println("Xoa thanh cong");
+		} else {
+			System.out.println("Khong tim thay ten trong danh sach");
+		}
+	}
 
-		dspk.remove(searchbyname());
-
-		if(size==dspk.size())
-			System.out.print("Khong co ten nao nhu the trong danh sacch nen khong the xoa \n");
+	public void search() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Nhap ten san pham muon tim: ");
+		String name = sc.nextLine();
+		int index = check(name);
+		if (index != -1) {
+			System.out.println(dspk.get(index).toString());
+		} else {
+			System.out.println("Khong tim thay ten trong danh sach");
+		}
 	}
 	public void sxtheocoin()
 	{

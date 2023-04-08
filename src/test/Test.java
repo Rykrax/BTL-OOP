@@ -20,7 +20,7 @@ public class Test {
 		KhachHangBLL dskh = new KhachHangBLL();
 		NhanVienBLL dsnv = new NhanVienBLL();
 		int key, option, n, m;
-		
+
 		loop: while(true) {
 			System.out.print("==================MENU=================="
 					+ "\n1. Nhap thong tin khach hang/nhan vien"
@@ -45,110 +45,115 @@ public class Test {
 				}
 			}
 			switch(key) {
-				case 1:
-					System.out.println("Ban muon nhap thong tin cua: "
-							+ "\n1.Khach hang"
-							+ "\n2.Nhan vien");
-					option = Integer.parseInt(sc.nextLine());
-					if (option == 1) {
-						System.out.print("Nhap so luong ban muon them: ");
-						n = Integer.parseInt(sc.nextLine());
-						for (int i = 0; i < n; i++) {
-							dskh.them();
-						}
-					} else if (option == 2) {
-						System.out.print("So luong nhan vien trong cua hang: ");
-						n = Integer.parseInt(sc.nextLine());
-						for (int i = 0; i < n; i++) {
-							dsnv.them();
-						}
+			case 1:
+				System.out.println("Ban muon nhap thong tin cua: "
+						+ "\n1.Khach hang"
+						+ "\n2.Nhan vien");
+				option = Integer.parseInt(sc.nextLine());
+				if (option == 1) {
+					System.out.print("Nhap so luong ban muon them: ");
+					n = Integer.parseInt(sc.nextLine());
+					for (int i = 0; i < n; i++) {
+						dskh.them();
 					}
+				} else if (option == 2) {
+					System.out.print("So luong nhan vien trong cua hang: ");
+					n = Integer.parseInt(sc.nextLine());
+					for (int i = 0; i < n; i++) {
+						dsnv.them();
+					}
+				}
+				break;
+			case 2:
+				System.out.println("Ban muon nhap thong tin cua: "
+						+ "\n1.Dien thoai"
+						+ "\n2.Phu kien");
+				option = Integer.parseInt(sc.nextLine());
+				if (option == 1) {
+					System.out.print("Nhap so luong dien thoai co trong cua hang: ");
+					n = Integer.parseInt(sc.nextLine());
+					for (int i = 0; i < n; i++) {
+						dsdt.them();
+					}
+				} else if (option == 2) {
+					System.out.print("Nhap so luong phu kien co trong cua hang: ");
+					n = Integer.parseInt(sc.nextLine());
+					for (int i = 0; i < n; i++) {
+						dspk.them();
+					}
+				}
+				break;
+			case 3:
+				System.out.println("Chon danh sach muon xem:"
+						+ "\n1. Danh sach khach hang"
+						+ "\n2. Danh sach nhan vien"
+						+ "\n3. Danh sach dien thoai"
+						+ "\n4. Danh sach phu kien");
+				option = Integer.parseInt(sc.nextLine());
+				switch(option) {
+				case 1:
+					ArrayList<KhachHang> tmp1 = dskh.dskh;
+					dskh.hienDanhSach(tmp1);
 					break;
 				case 2:
-					System.out.println("Ban muon nhap thong tin cua: "
-							+ "\n1.Dien thoai"
-							+ "\n2.Phu kien");
-					option = Integer.parseInt(sc.nextLine());
-					if (option == 1) {
-						System.out.print("Nhap so luong dien thoai co trong cua hang: ");
-						n = Integer.parseInt(sc.nextLine());
-						for (int i = 0; i < n; i++) {
-							dsdt.them();
-						}
-					} else if (option == 2) {
-						System.out.print("Nhap so luong phu kien co trong cua hang: ");
-						n = Integer.parseInt(sc.nextLine());
-						for (int i = 0; i < n; i++) {
-							dspk.them();
-						}
-					}
+					ArrayList<NhanVien> tmp2 = dsnv.dsnv;
+					dsnv.hienDanhSach(tmp2);
 					break;
 				case 3:
-					System.out.println("Chon danh sach muon xem:"
-							+ "\n1. Danh sach khach hang"
-							+ "\n2. Danh sach nhan vien"
-							+ "\n3. Danh sach dien thoai"
-							+ "\n4. Danh sach phu kien");
-					option = Integer.parseInt(sc.nextLine());
-					switch(option) {
-						case 1:
-							ArrayList<KhachHang> tmp1 = (ArrayList<KhachHang>) dskh.dskh;
-							dskh.hienDanhSach(tmp1);
-							break;
-						case 2:
-							ArrayList<NhanVien> tmp2 = dsnv.dsnv;
-							dsnv.hienDanhSach(tmp2);
-							break;
-						case 3:
-							ArrayList<DienThoai> tmp3 = dsdt.dsdt;
-							dsdt.hienDanhSach(tmp3);
-							break;
-						case 4:
-							ArrayList<PhuKien> tmp4 = dspk.dspk;
- 							dspk.hienDanhSach(tmp4);
-							break;
+					ArrayList<DienThoai> tmp3 = dsdt.dsdt;
+					dsdt.hienDanhSach(tmp3);
+					break;
+				case 4:
+					ArrayList<PhuKien> tmp4 = dspk.dspk;
+					dspk.hienDanhSach(tmp4);
+					break;
+				}
+				break;
+			case 4:
+				System.out.println("Chon danh sach muon chinh sua:"
+						+ "\n1. Danh sach khach hang"
+						+ "\n2. Danh sach nhan vien"
+						+ "\n3. Danh sach dien thoai"
+						+ "\n4. Danh sach phu kien");
+				option = Integer.parseInt(sc.nextLine());
+				switch(option) {
+				case 1:
+				case 2:
+				case 3:
+					System.out.print("Ban muon xoa(1)/them(2)? ");
+					m = Integer.parseInt(sc.nextLine());
+					if (m == 1) {
+						dsdt.xoa();
+					} else {
+						dsdt.them();
 					}
 					break;
 				case 4:
-					System.out.println("Chon danh sach muon chinh sua:"
-							+ "\n1. Danh sach khach hang"
-							+ "\n2. Danh sach nhan vien"
-							+ "\n3. Danh sach dien thoai"
-							+ "\n4. Danh sach phu kien");
-					option = Integer.parseInt(sc.nextLine());
-					switch(option) {
-						case 1:
-						case 2:
-						case 3:
-							System.out.print("Ban muon xoa(1)/them(2)? ");
-							m = Integer.parseInt(sc.nextLine());
-							if (m == 1) {
-								dsdt.xoa();
-							} else {
-								dsdt.them();
-							}
-							break;
-					case 4:
 				}
+				break;
+			case 5:
+				System.out.println("Ban muon tim kiem:"
+						+ "\n1. Khach hang"
+						+ "\n2. Nhan vien"
+						+ "\n3. Dien thoai"
+						+ "\n4. Phu kien");
+				option = Integer.parseInt(sc.nextLine());
+				switch(option) {
+				case 1:
 					break;
-				case 5:
-					System.out.println("Ban muon tim kiem:"
-							+ "\n1. Khach hang"
-							+ "\n2. Nhan vien"
-							+ "\n3. Dien thoai"
-							+ "\n4. Phu kien");
-					option = Integer.parseInt(sc.nextLine());
-					switch(option) {
-						case 1:
-						case 2:
-						case 3:
-//							dsdt.search();
-						case 4:
-					}
+				case 2:
 					break;
-				case 0:
-					System.out.println("Da thoat chuong trinh.");
-					break loop;
+				case 3:
+					dsdt.search();
+					break;
+				case 4:
+					dspk.search();
+					break;
+				}
+				break;
+			case 0:
+				System.out.println("Da thoat chuong trinh.");
+				break loop;
 			}
 		}
 	}

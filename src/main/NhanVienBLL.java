@@ -15,10 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/**
- *
- * @author Admin
- */
 public class NhanVienBLL {
 	public ArrayList<NhanVien> dsnv = new ArrayList<>();
 
@@ -54,23 +50,7 @@ public class NhanVienBLL {
 			}
 		}
 	}
-	public NhanVien searchbyname() throws IOException
-	{
-		Scanner sc= new Scanner (System.in);
-		System.out.print(" ten nhan vien    : ");
-		String sten=sc.nextLine();
-
-		for(NhanVien x: docfile() )
-		{
-			if(x.getHoten().compareTo(sten)==0)
-			{
-				return x;
-			}
-		}
-		return null;
-
-
-	}
+	
 	public void ghifile() throws FileNotFoundException, IOException
 	{
 		FileOutputStream fo= new FileOutputStream("NhanVien.dat");

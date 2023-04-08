@@ -54,28 +54,30 @@ public class DienThoaiBLL {
 			}
 		}
 	}
-
-	public DienThoai searchByName () throws IOException {
+	public void xoa() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Nhap ten dien thoai can tim: ");
-		String tensp = sc.nextLine();
-		for(DienThoai x:docfile()) {
-			if(x.getTenSP().compareTo(tensp)==0) {
-				return x;
-			}
+		System.out.print("Nhap ten muon xoa: ");
+		String name = sc.nextLine();
+		int index = check(name);
+		if (index != -1) {
+			dsdt.remove(index);
+			System.out.println("Xoa thanh cong");
+		} else {
+			System.out.println("Khong tim thay ten trong danh sach");
 		}
-		return null;	
 	}
 
-
-	public void xoa() throws IOException {
-		int size=dsdt.size(); 
-		dsdt.remove(searchByName());
-		if(size==dsdt.size())
-			System.out.print("Khong co ten nao nhu the trong danh sacch nen khong the xoa \n");
+	public void search() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Nhap ten san pham muon tim: ");
+		String name = sc.nextLine();
+		int index = check(name);
+		if (index != -1) {
+			System.out.println(dsdt.get(index).toString());
+		} else {
+			System.out.println("Khong tim thay ten trong danh sach");
+		}
 	}
-
-
 	public void sapXepGiaTienGiamDan() {
 		Collections.sort(this.dsdt, new Comparator<DienThoai>() {
 			@Override
