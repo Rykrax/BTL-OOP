@@ -118,7 +118,23 @@ public class Test {
 				option = Integer.parseInt(sc.nextLine());
 				switch(option) {
 				case 1:
+					System.out.print("Ban muon xoa(1)/them(2)? ");
+					m = Integer.parseInt(sc.nextLine());
+					if (m == 1) {
+						dskh.xoa();
+					} else {
+						dskh.them();
+					}
+					break;
 				case 2:
+					System.out.print("Ban muon xoa(1)/them(2)? ");
+					m = Integer.parseInt(sc.nextLine());
+					if (m == 1) {
+						dsnv.xoa();
+					} else {
+						dsnv.them();
+					}
+					break;
 				case 3:
 					System.out.print("Ban muon xoa(1)/them(2)? ");
 					m = Integer.parseInt(sc.nextLine());
@@ -129,6 +145,14 @@ public class Test {
 					}
 					break;
 				case 4:
+					System.out.print("Ban muon xoa(1)/them(2)? ");
+					m = Integer.parseInt(sc.nextLine());
+					if (m == 1) {
+						dspk.xoa();
+					} else {
+						dspk.them();
+					}
+					break;
 				}
 				break;
 			case 5:
@@ -140,8 +164,10 @@ public class Test {
 				option = Integer.parseInt(sc.nextLine());
 				switch(option) {
 				case 1:
+					dskh.search();
 					break;
 				case 2:
+					dsnv.search();
 					break;
 				case 3:
 					dsdt.search();

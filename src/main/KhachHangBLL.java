@@ -24,6 +24,14 @@ public class KhachHangBLL {
 		}
 		return -1;
 	}
+	public int check2(String name) {
+		for (int i = 0; i < dskh.size(); i++) {
+			if (dskh.get(i).getHoten().compareTo(name) == 0) {
+				return i;
+			}
+		}
+		return -1;
+	}
 	public void them() {
 		Scanner sc = new Scanner(System.in); 
 		String maKH; 
@@ -40,7 +48,21 @@ public class KhachHangBLL {
 		kh.nhap();
 		dskh.add(kh);
 	}
-	public void hienDanhSach(ArrayList<KhachHang> dskh) throws IOException {
+	
+	public void xoa() {
+		Scanner sc = new Scanner(System.in); 
+		System.out.println("Nhap ma khach hang: ");
+		String maKH;
+		maKH = sc.nextLine();
+		int index = check(maKH);
+		if (index == -1) {
+			System.out.println("Khong tim thay thong tin khach hang");
+		} else {
+			dskh.remove(index);
+			System.out.println("Xoa thanh cong");
+		}
+	}
+	public void hienDanhSach(ArrayList<KhachHang> dskh) {
 		if (dskh.isEmpty()) {
 			System.out.println("Danh sach rong!");
 		} else {
@@ -50,7 +72,21 @@ public class KhachHangBLL {
 		}
 	}
 
-//	public void 
+	public void search() {
+		Scanner sc = new Scanner(System.in); 
+		String name; 
+		System.out.print("Nhap ten khach hang: ");
+		name = sc.nextLine();
+		if (check2(name) == -1) {
+			System.out.println("Khong tim thay thong tin khach hang");
+		} else {
+			for (KhachHang x : dskh) {
+				if (x.getHoten().compareTo(name) == 0) {
+					System.out.println(x.toString());
+				}
+			}
+		}
+	}
 	public void ghifile() throws FileNotFoundException, IOException
 	{
 		FileOutputStream fo= new FileOutputStream("KhachHang.dat");

@@ -18,12 +18,21 @@ import java.util.Scanner;
 public class NhanVienBLL {
 	public ArrayList<NhanVien> dsnv = new ArrayList<>();
 
-	public boolean check(String s) {
-		for(NhanVien x : dsnv) {
-			if(x.getMaNV().compareTo(s)==0)
-				return true;
+	public int check(String id) {
+		for (int i = 0; i < dsnv.size(); i++) {
+			if (dsnv.get(i).getMaNV().compareTo(id) == 0) {
+				return i;
+			}
 		}
-		return false;
+		return -1;
+	}
+	public int check2(String name) {
+		for (int i = 0; i < dsnv.size(); i++) {
+			if (dsnv.get(i).getHoten().compareTo(name) == 0) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	public void them() {
 		Scanner sc = new Scanner(System.in); 
@@ -31,15 +40,29 @@ public class NhanVienBLL {
 		System.out.print("Ma nhan vien: ");
 		maNV = sc.nextLine();
 		while(true) {
-			if (check(maNV)) {
-				System.out.print("Ma nhan vien da ton tai! ");
+			if (check(maNV) != -1) {
+				System.out.print("Ma khach hang da ton tai! ");
 			} else break;
-			System.out.print("Nhap lai ma nhan vien: ");
+			System.out.print("Nhap lai ma khach hang: ");
 			maNV = sc.nextLine();
 		}
 		NhanVien nv = new NhanVien(maNV);
 		nv.nhap();
 		dsnv.add(nv);
+	}
+	
+	public void xoa() {
+		Scanner sc = new Scanner(System.in); 
+		System.out.println("Nhap ma nhan vien: ");
+		String maNV;
+		maNV = sc.nextLine();
+		int index = check(maNV);
+		if (index == -1) {
+			System.out.println("Khong tim thay thong tin nhan vien");
+		} else {
+			dsnv.remove(index);
+			System.out.println("Xoa thanh cong");
+		}
 	}
 	public void hienDanhSach(ArrayList<NhanVien> dsnv) throws IOException {
 		if (dsnv.isEmpty()) {
@@ -51,6 +74,21 @@ public class NhanVienBLL {
 		}
 	}
 	
+	public void search() {
+		Scanner sc = new Scanner(System.in); 
+		String name; 
+		System.out.print("Nhap ten nhan vien: ");
+		name = sc.nextLine();
+		if (check2(name) == -1) {
+			System.out.println("Khong tim thay thong tin khach hang");
+		} else {
+			for (NhanVien x : dsnv) {
+				if (x.getHoten().compareTo(name) == 0) {
+					System.out.println(x.toString());
+				}
+			}
+		}
+	}
 	public void ghifile() throws FileNotFoundException, IOException
 	{
 		FileOutputStream fo= new FileOutputStream("NhanVien.dat");

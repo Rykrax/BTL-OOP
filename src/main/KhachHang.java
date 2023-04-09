@@ -1,8 +1,9 @@
 package main;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class KhachHang extends Person{
+public class KhachHang extends Person implements Serializable{
 	private String maKH;
 
 	public KhachHang() {
