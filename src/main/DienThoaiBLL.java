@@ -44,7 +44,16 @@ public class DienThoaiBLL {
 			dsdt.add(dt);
 		}
 	}
-
+	
+	public void hienDanhSach() {
+		if (this.dsdt.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
+			for (DienThoai x : this.dsdt) {
+				System.out.println(x.toString());
+			}
+		}
+	}
 	public void hienDanhSach(ArrayList<DienThoai> dsdt) throws IOException {
 		if (dsdt.isEmpty()) {
 			System.out.println("Danh sach rong!");
@@ -84,9 +93,7 @@ public class DienThoaiBLL {
 			public int compare(DienThoai dt1, DienThoai dt2) {
 				if (dt1.getCoin() < dt2.getCoin()) {
 					return 1;
-				} else if (dt1.getCoin() > dt2.getCoin()) {
-					return -1;
-				} else return 0;
+				} else return -1;
 			}
 		});
 	}
@@ -97,9 +104,7 @@ public class DienThoaiBLL {
 			public int compare(DienThoai dt1, DienThoai dt2) {
 				if (dt1.getCoin() > dt2.getCoin()) {
 					return 1;
-				} else if (dt1.getCoin() < dt2.getCoin()) {
-					return -1;
-				} else return 0;
+				} else return -1;
 			}
 		});
 	}

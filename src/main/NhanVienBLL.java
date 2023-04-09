@@ -12,6 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -64,7 +66,7 @@ public class NhanVienBLL {
 			System.out.println("Xoa thanh cong");
 		}
 	}
-	public void hienDanhSach(ArrayList<NhanVien> dsnv) throws IOException {
+	public void hienDanhSach() {
 		if (dsnv.isEmpty()) {
 			System.out.println("Danh sach rong!");
 		} else {
@@ -73,7 +75,25 @@ public class NhanVienBLL {
 			}
 		}
 	}
-	
+	public void hienDanhSach(ArrayList<NhanVien> dsnv) {
+		if (dsnv.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
+			for(NhanVien x : dsnv) {
+				System.out.println(x.toString());
+			}
+		}
+	}
+	public void sapXep() {
+		Collections.sort(this.dsnv, new Comparator<NhanVien>() {
+			@Override
+			public int compare(NhanVien nv1, NhanVien nv2) {
+				if (nv1.getName().compareTo(nv2.getName()) > 0) {
+					return 1;
+				} else return -1;
+			}	
+		});
+	}
 	public void search() {
 		Scanner sc = new Scanner(System.in); 
 		String name; 

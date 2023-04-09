@@ -177,6 +177,50 @@ public class Test {
 					break;
 				}
 				break;
+			case 6:
+				System.out.println("Chon danh sach muon sap xep: "
+						+ "\n1. Khach hang"
+						+ "\n2. Nhan vien"
+						+ "\n3. Dien thoai"
+						+ "\n4. Phu kien");
+				option = Integer.parseInt(sc.nextLine());
+				switch(option) {
+				case 1:
+					dskh.sapXep();
+					dskh.hienDanhSach();
+					break;
+				case 2:
+					dsnv.sapXep();
+					dsnv.hienDanhSach();
+					break;
+				case 3:
+					System.out.println("Sap xep gia tien:"
+							+ "\n1.Cao -> thap"
+							+ "\n2.Thap -> cao");
+					m = Integer.parseInt(sc.nextLine());
+					if (m == 1) {
+						dsdt.sapXepGiaTienGiamDan();
+						dsdt.hienDanhSach();
+					} else {
+						dsdt.sapXepGiaTienTangDan();
+						dsdt.hienDanhSach();
+					}
+					break;
+				case 4:
+					System.out.println("Sap xep gia tien:"
+							+ "\n1.Cao -> thap"
+							+ "\n2.Thap -> cao");
+					m = Integer.parseInt(sc.nextLine());
+					if (m == 1) {
+						dspk.sapXepGiaTienGiamDan();
+						dspk.hienDanhSach();
+					} else {
+						dspk.sapXepGiaTienTangDan();
+						dspk.hienDanhSach();
+					}
+					break;
+				}
+				break;
 			case 0:
 				System.out.println("Da thoat chuong trinh.");
 				break loop;

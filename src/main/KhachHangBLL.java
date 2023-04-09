@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,7 +50,7 @@ public class KhachHangBLL {
 		kh.nhap();
 		dskh.add(kh);
 	}
-	
+
 	public void xoa() {
 		Scanner sc = new Scanner(System.in); 
 		System.out.println("Nhap ma khach hang: ");
@@ -60,6 +62,15 @@ public class KhachHangBLL {
 		} else {
 			dskh.remove(index);
 			System.out.println("Xoa thanh cong");
+		}
+	}
+	public void hienDanhSach() {
+		if (dskh.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
+			for (KhachHang x : dskh) {
+				System.out.println(x.toString());
+			}
 		}
 	}
 	public void hienDanhSach(ArrayList<KhachHang> dskh) {
@@ -86,6 +97,17 @@ public class KhachHangBLL {
 				}
 			}
 		}
+	}
+
+	public void sapXep() {
+		Collections.sort(this.dskh, new Comparator<KhachHang>() {
+			@Override
+			public int compare(KhachHang kh1, KhachHang kh2) {
+				if (kh1.getName().compareTo(kh2.getName()) > 0) {
+					return 1;
+				} else return -1;
+			}	
+		});
 	}
 	public void ghifile() throws FileNotFoundException, IOException
 	{

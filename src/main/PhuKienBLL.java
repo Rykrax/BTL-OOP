@@ -50,6 +50,15 @@ public class PhuKienBLL {
 			dspk.add(pk);
 		}
 	}
+	public void hienDanhSach() {
+		if (dspk.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
+			for (PhuKien x : dspk) {
+				System.out.println(x.toString());
+			}
+		}
+	}
 	public void hienDanhSach(ArrayList<PhuKien> dspk) throws IOException, FileNotFoundException, ClassNotFoundException {
 		if (dspk.isEmpty()) {
 			System.out.println("Danh sach rong!");
@@ -83,18 +92,25 @@ public class PhuKienBLL {
 			System.out.println("Khong tim thay ten trong danh sach");
 		}
 	}
-	public void sxtheocoin()
-	{
-		Collections.sort(dspk, new Comparator<SanPham>(){
+	public void sapXepGiaTienGiamDan() {
+		Collections.sort(this.dspk, new Comparator<PhuKien>() {
 			@Override
-			public int compare(SanPham o1, SanPham o2) {
-				if(o1.getCoin()<o2.getCoin())
-				{
-					return -1;
-				}
-				else return 1;
+			public int compare(PhuKien pk1, PhuKien pk2) {
+				if (pk2.getCoin() < pk2.getCoin()) {
+					return 1;
+				} else return -1;
 			}
+		});
+	}
 
+	public void sapXepGiaTienTangDan() {
+		Collections.sort(this.dspk, new Comparator<PhuKien>() {
+			@Override
+			public int compare(PhuKien pk1, PhuKien pk2) {
+				if (pk1.getCoin() > pk2.getCoin()) {
+					return 1;
+				} else return -1;
+			}
 		});
 	}
 	public void ghifile() throws FileNotFoundException, IOException
