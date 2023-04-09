@@ -44,7 +44,7 @@ public class DienThoaiBLL {
 			dsdt.add(dt);
 		}
 	}
-	
+
 	public void hienDanhSach() {
 		if (this.dsdt.isEmpty()) {
 			System.out.println("Danh sach rong!");
@@ -108,17 +108,16 @@ public class DienThoaiBLL {
 			}
 		});
 	}
-	public void ghifile() throws FileNotFoundException, IOException {
-		FileOutputStream f= new FileOutputStream("Dien Thoai2.dat");
+	public void ghiFile(ArrayList<DienThoai> dsdt) throws FileNotFoundException, IOException {
+		FileOutputStream f= new FileOutputStream("Dien Thoai.dat");
 		ObjectOutputStream oos = new ObjectOutputStream(f); 
 		try {
-			for(SanPham x: dsdt)
-			{
+			for(SanPham x: dsdt) {
 				oos.writeObject(x);
 			}
-			//   System.out.println("Ghi File succed ");
+			System.out.println("Ghi file thanh cong");
 		} catch (Exception e) {
-			System.out.println("Ghi File loi ");
+			System.out.println("Da xay ra loi trong qua trinh ghi file!!!");
 		} finally {
 			if(oos!=null) oos.close();
 			if(f!=null) f.close();
@@ -126,7 +125,7 @@ public class DienThoaiBLL {
 	}
 	public ArrayList<DienThoai> docfile() throws FileNotFoundException, IOException
 	{
-		FileInputStream fi = new FileInputStream("Dien Thoai2.dat");
+		FileInputStream fi = new FileInputStream("Dien Thoai.dat");
 		ObjectInputStream ooi = new ObjectInputStream(fi); 
 		ArrayList<DienThoai> kq = new ArrayList<>();
 		DienThoai dt=null;

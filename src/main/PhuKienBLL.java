@@ -113,38 +113,24 @@ public class PhuKienBLL {
 			}
 		});
 	}
-	public void ghifile() throws FileNotFoundException, IOException
-	{
-		FileOutputStream fo =new FileOutputStream("PhuKien2.bin");
+	public void ghiFile(ArrayList<PhuKien> dspk) throws FileNotFoundException, IOException { 
+		FileOutputStream fo = new FileOutputStream("PhuKien.bin");
 		ObjectOutputStream obw = new ObjectOutputStream (fo);
 		try {
-
-
-			//                obw.writeObject(dspk);
-			//                obw.flush();
-			for(PhuKien x: dspk)
-			{
+			for(PhuKien x: dspk) {
 				obw.writeObject(x);
 			}
-
-
-
-
-			//    System.out.println("ghi file thanh cong");
-		} catch (IOException e)
-		{
-			System.out.print("File ko ton tai : \n");
-		}
-		finally{
-
+			System.out.println("Ghi file thanh cong");
+		} catch (Exception e) {
+			System.out.println("Da xay ra loi trong qua trinh ghi file!!!");
+		} finally{
 			if(obw!=null) obw.close();
 			if(fo!=null) fo.close();
 		}
-
 	}
 	public ArrayList<PhuKien> docfile() throws FileNotFoundException, IOException, ClassNotFoundException
 	{
-		FileInputStream fi =new FileInputStream("PhuKien2.bin");
+		FileInputStream fi =new FileInputStream("PhuKien.bin");
 		ObjectInputStream obi = new ObjectInputStream(fi);
 		ArrayList<PhuKien> kp= new ArrayList<>();
 		PhuKien pk= null;

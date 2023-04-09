@@ -109,41 +109,36 @@ public class NhanVienBLL {
 			}
 		}
 	}
-	public void ghifile() throws FileNotFoundException, IOException
-	{
+	public void ghiFile(ArrayList<NhanVien> dsnv) throws FileNotFoundException, IOException {
 		FileOutputStream fo= new FileOutputStream("NhanVien.dat");
 		ObjectOutputStream oos = new ObjectOutputStream(fo); 
 		try {
-			for(Person x : dsnv)//lua ghi vao file laf lop cha
-			{
+			for(Person x : dsnv) {
 				oos.writeObject(x);
 			}
-			System.out.println("  ghi file succed ");
+			System.out.println("Ghi file thanh cong");
 		} catch (Exception e) {
-			System.out.println("Khong the ghi file ");
+			System.out.println("Da xay ra loi trong qua trinh ghi file!!!");
 		} finally {
 			if(fo!=null) fo.close();
 			if(oos!=null) oos.close();
 		}
 
 	}
-	public ArrayList<NhanVien> docfile() throws FileNotFoundException, IOException
-	{
+	public ArrayList<NhanVien> docfile() throws FileNotFoundException, IOException {
 		FileInputStream fi =new FileInputStream("NhanVien.dat");
 		ObjectInputStream ooi= new ObjectInputStream(fi);
 		ArrayList<NhanVien> kq= new ArrayList<>();
 		NhanVien nv=null;
 		try {
-			while(fi.available()>0)
-			{
+			while(fi.available()>0) {
 				nv=(NhanVien)ooi.readObject();
 				kq.add(nv);
 
 			}
 			// System.out.println("Doc File thanh cong ");
 		} catch (Exception e) {
-			System.out.println("File khong ton tai : ");
-
+			System.out.println("File khong ton tai: ");
 		} finally {
 			fi.close();
 			ooi.close();

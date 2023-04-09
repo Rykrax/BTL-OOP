@@ -109,25 +109,22 @@ public class KhachHangBLL {
 			}	
 		});
 	}
-	public void ghifile() throws FileNotFoundException, IOException
-	{
+	public void ghiFile(ArrayList<KhachHang> dskh) throws FileNotFoundException, IOException {
 		FileOutputStream fo= new FileOutputStream("KhachHang.dat");
 		ObjectOutputStream oos = new ObjectOutputStream(fo);
 		try {
-			for(KhachHang x : dskh)
-			{
+			for(KhachHang x : dskh) {
 				oos.writeObject(x);
 			}
-			System.out.println("  ghi file succed ");
+			System.out.println("Ghi file thanh cong");
 		} catch (Exception e) {
-			System.out.println(" Khong the ghi file ");
+			System.out.println("Da xay ra loi trong qua trinh ghi file!!!");
 		} finally {
 			if(fo!=null) fo.close();
 			if(oos!=null) oos.close();
 		}
 	}
-	public ArrayList<KhachHang> docfile() throws FileNotFoundException, IOException
-	{
+	public ArrayList<KhachHang> docfile() throws FileNotFoundException, IOException {
 		FileInputStream fi= new FileInputStream("KhachHang.dat");
 		ObjectInputStream ooi = new ObjectInputStream(fi);
 		ArrayList<KhachHang> kq= new ArrayList<>();

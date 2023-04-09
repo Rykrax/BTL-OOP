@@ -221,6 +221,69 @@ public class Test {
 					break;
 				}
 				break;
+			case 7:
+				System.out.print("Ban muon doc(1)/ghi(2) file? ");
+				option = Integer.parseInt(sc.nextLine());
+				if (option == 1) {
+					System.out.println("Chon danh sach muon doc: "
+							+ "\n1. Khach hang"
+							+ "\n2. Nhan vien"
+							+ "\n3. Dien thoai"
+							+ "\n4. Phu kien");
+					m = Integer.parseInt(sc.nextLine());
+					switch(m) {
+					case 1:
+						ArrayList<KhachHang> tmp1 = dskh.docfile();
+						for (KhachHang x : tmp1) {
+							System.out.println(x.toString());
+						}
+						break;
+					case 2:
+						ArrayList<NhanVien> tmp2 = dsnv.docfile();
+						for (NhanVien x : tmp2) {
+							System.out.println(x.toString());
+						}
+						break;
+					case 3:
+						ArrayList<DienThoai> tmp3 = dsdt.docfile();
+						for (DienThoai x : tmp3) {
+							System.out.println(x.toString());
+						}
+						break;
+					case 4:
+						ArrayList<PhuKien> tmp4 = dspk.docfile();
+						for (PhuKien x : tmp4) {
+							System.out.println(x.toString());
+						}
+						break;
+					}
+				} else {
+					System.out.println("Chon danh sach muon ghi: "
+							+ "\n1. Khach hang"
+							+ "\n2. Nhan vien"
+							+ "\n3. Dien thoai"
+							+ "\n4. Phu kien");
+					m = Integer.parseInt(sc.nextLine());
+					switch(m) {
+					case 1:
+						ArrayList<KhachHang> tmp1 = dskh.dskh;
+						dskh.ghiFile(tmp1);
+						break;
+					case 2:
+						ArrayList<NhanVien> tmp2 = dsnv.dsnv;
+						dsnv.ghiFile(tmp2);
+						break;
+					case 3:
+						ArrayList<DienThoai> tmp3 = dsdt.dsdt;
+						dsdt.ghiFile(tmp3);
+						break; 
+					case 4:
+						ArrayList<PhuKien> tmp4 = dspk.dspk;
+						dspk.ghiFile(tmp4);
+						break;
+					}
+				}
+				break;
 			case 0:
 				System.out.println("Da thoat chuong trinh.");
 				break loop;
