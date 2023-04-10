@@ -289,11 +289,19 @@ public class Test {
 				}
 				break;
 			case 8:
-				HoaDon temp = new HoaDon();
-				temp.taoHoaDon(dskh, dsnv, dsdt, dspk);
-				list.them(temp);
-				System.out.println(temp.toString());
-				list.ghiFile();
+				if (dskh.dskh.isEmpty() || dsnv.dsnv.isEmpty()) {
+					System.out.println("Khong the tao hoa don do danh sach khach hang/nhan vien khong du du lieu");
+				} else if (!dskh.dskh.isEmpty() && !dsnv.dsnv.isEmpty()) {
+					if (!dsdt.dsdt.isEmpty() || !dspk.dspk.isEmpty()) {
+						HoaDon temp = new HoaDon();
+						temp.taoHoaDon(dskh, dsnv, dsdt, dspk);
+						list.them(temp);
+						System.out.println(temp.toString());
+						list.ghiFile();
+					} else {
+						System.out.println("Khong the tao hoa don do khong co san pham trong danh sach");
+					}
+				}
 				break;
 			case 0:
 				System.out.println("Da thoat chuong trinh.");

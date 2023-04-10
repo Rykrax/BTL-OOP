@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
 import java.io.FileInputStream;
@@ -16,23 +12,21 @@ import java.util.Scanner;
 
 public class HoaDonBLL {
 	public ArrayList<HoaDon> list = new ArrayList<>();
-	
+
 	public void them(HoaDon hd) {
 		list.add(hd);
 	}
-	
+
 	public  void hienDanhSach() {
-		for(HoaDon x: list) {
-			System.out.println(x.toString());
+		if (list.isEmpty()) {
+			System.out.println("Danh sach rong!");
+		} else {
+			for(HoaDon x: list) {
+				System.out.println(x.toString());
+			}
 		}
 	}
-//	public  void hien2() throws IOException
-//	{
-//		for(HoaDon x: docfile())
-//		{
-//			System.out.println(x);
-//		}
-//	}
+
 	public void ghiFile() throws FileNotFoundException, IOException {
 		FileOutputStream f= new FileOutputStream("HoaDon.dat");
 		ObjectOutputStream oos = new ObjectOutputStream (f);

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
 import java.io.Serializable;
@@ -71,70 +67,78 @@ public class HoaDon implements Serializable {
 			System.out.print("Lua chon san pham: ");
 			int option = Integer.parseInt(sc.nextLine());
 			if (option == 1) {
-				System.out.println("Danh sach dien thoai co trong cua hang: ");
-				for (int i = 0; i < dsdt.dsdt.size(); i++) {
-					System.out.println("Ten: " + dsdt.dsdt.get(i).getTenSP() 
-							+ ", gia: " + numf.format(dsdt.dsdt.get(i).getCoin()));
-				}
-				System.out.print("Nhap ten san pham: ");
-				String name = sc.nextLine();
-				loop: while(true) {
-					int vt = dsdt.check(name);
-					if (vt != -1 && dsdt.dsdt.get(vt).getSoLuong() != 0) {
-						System.out.println("So luong hien co: " + dsdt.dsdt.get(vt).getSoLuong());
-						System.out.print("Nhap so luong mua: ");
-						int cnt = Integer.parseInt(sc.nextLine());
-						while(true) {
-							if (cnt < 0 || cnt > dsdt.dsdt.get(vt).getSoLuong()) {
-								System.out.print("So luong khong phu hop! Hay nhap lai: ");
-							} else {
-								SanPham temp = dsdt.dsdt.get(vt);
-								sp.put(temp, cnt);
-								dsdt.dsdt.get(vt).updateSoLuong(-cnt);
-								break loop;
-							}
-							cnt = Integer.parseInt(sc.nextLine());
-						}
-					} else if (vt != -1 && dsdt.dsdt.get(vt).getSoLuong() == 0) {
-						System.out.println("San pham da het.");
-						break loop;
-					} else {
-						System.out.print("Khong tim thay. Hay nhap lai ten san pham: ");
+				if (dsdt.dsdt.isEmpty()) {
+					System.out.println("Hien khong co san pham trong cua hang!");
+				} else {
+					System.out.println("Danh sach dien thoai co trong cua hang: ");
+					for (int i = 0; i < dsdt.dsdt.size(); i++) {
+						System.out.println("Ten: " + dsdt.dsdt.get(i).getTenSP() 
+								+ ", gia: " + numf.format(dsdt.dsdt.get(i).getCoin()));
 					}
-					name = sc.nextLine();
+					System.out.print("Nhap ten san pham: ");
+					String name = sc.nextLine();
+					loop: while(true) {
+						int vt = dsdt.check(name);
+						if (vt != -1 && dsdt.dsdt.get(vt).getSoLuong() != 0) {
+							System.out.println("So luong hien co: " + dsdt.dsdt.get(vt).getSoLuong());
+							System.out.print("Nhap so luong mua: ");
+							int cnt = Integer.parseInt(sc.nextLine());
+							while(true) {
+								if (cnt < 0 || cnt > dsdt.dsdt.get(vt).getSoLuong()) {
+									System.out.print("So luong khong phu hop! Hay nhap lai: ");
+								} else {
+									SanPham temp = dsdt.dsdt.get(vt);
+									sp.put(temp, cnt);
+									dsdt.dsdt.get(vt).updateSoLuong(-cnt);
+									break loop;
+								}
+								cnt = Integer.parseInt(sc.nextLine());
+							}
+						} else if (vt != -1 && dsdt.dsdt.get(vt).getSoLuong() == 0) {
+							System.out.println("San pham da het.");
+							break loop;
+						} else {
+							System.out.print("Khong tim thay. Hay nhap lai ten san pham: ");
+						}
+						name = sc.nextLine();
+					}
 				}
 			} else {
-				System.out.println("Danh sach phu kien co trong cua hang: ");
-				for (int i = 0; i < dspk.dspk.size(); i++) {
-					System.out.println("Ten: " + dspk.dspk.get(i).getTenSP() 
-							+ ", gia: " + numf.format(dspk.dspk.get(i).getCoin()));
-				}
-				System.out.print("Nhap ten san pham: ");
-				String name = sc.nextLine();
-				loop: while(true) {
-					int vt = dspk.check(name);
-					if (vt != -1 && dspk.dspk.get(vt).getSoLuong() != 0) {
-						System.out.println("So luong hien co: " + dspk.dspk.get(vt).getSoLuong());
-						System.out.print("Nhap so luong mua: ");
-						int cnt = Integer.parseInt(sc.nextLine());
-						while(true) {
-							if (cnt < 0 || cnt > dspk.dspk.get(vt).getSoLuong()) {
-								System.out.print("So luong khong phu hop! Hay nhap lai: ");
-							} else {
-								SanPham temp = dspk.dspk.get(vt);
-								sp.put(temp, cnt);
-								dspk.dspk.get(vt).updateSoLuong(-cnt);
-								break loop;
-							}
-							cnt = Integer.parseInt(sc.nextLine());
-						}
-					} else if (vt != -1 && dspk.dspk.get(vt).getSoLuong() == 0) {
-						System.out.println("San pham da het.");
-						break loop;
-					} else {
-						System.out.print("Khong tim thay. Hay nhap lai ten san pham: ");
+				if (dspk.dspk.isEmpty()) {
+					System.out.println("Hien khong co san pham trong cua hang!");
+				} else {
+					System.out.println("Danh sach phu kien co trong cua hang: ");
+					for (int i = 0; i < dspk.dspk.size(); i++) {
+						System.out.println("Ten: " + dspk.dspk.get(i).getTenSP() 
+								+ ", gia: " + numf.format(dspk.dspk.get(i).getCoin()));
 					}
-					name = sc.nextLine();
+					System.out.print("Nhap ten san pham: ");
+					String name = sc.nextLine();
+					loop: while(true) {
+						int vt = dspk.check(name);
+						if (vt != -1 && dspk.dspk.get(vt).getSoLuong() != 0) {
+							System.out.println("So luong hien co: " + dspk.dspk.get(vt).getSoLuong());
+							System.out.print("Nhap so luong mua: ");
+							int cnt = Integer.parseInt(sc.nextLine());
+							while(true) {
+								if (cnt < 0 || cnt > dspk.dspk.get(vt).getSoLuong()) {
+									System.out.print("So luong khong phu hop! Hay nhap lai: ");
+								} else {
+									SanPham temp = dspk.dspk.get(vt);
+									sp.put(temp, cnt);
+									dspk.dspk.get(vt).updateSoLuong(-cnt);
+									break loop;
+								}
+								cnt = Integer.parseInt(sc.nextLine());
+							}
+						} else if (vt != -1 && dspk.dspk.get(vt).getSoLuong() == 0) {
+							System.out.println("San pham da het.");
+							break loop;
+						} else {
+							System.out.print("Khong tim thay. Hay nhap lai ten san pham: ");
+						}
+						name = sc.nextLine();
+					}
 				}
 			}
 			System.out.println("Ban co muon tiep tuc mua khong?"
