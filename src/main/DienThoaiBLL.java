@@ -138,7 +138,6 @@ public class DienThoaiBLL {
 			}
 		} catch (Exception e) {
 			System.out.println(" File khong ton tai : ");
-			//return null;
 		} finally {
 			ooi.close();
 			fi.close();

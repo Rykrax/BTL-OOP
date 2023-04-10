@@ -3,6 +3,8 @@ package test;
 import java.util.ArrayList;
 import java.util.Scanner;
 import main.DienThoaiBLL;
+import main.HoaDon;
+import main.HoaDonBLL;
 import main.KhachHangBLL;
 import main.NhanVienBLL;
 import main.PhuKienBLL;
@@ -19,6 +21,7 @@ public class Test {
 		PhuKienBLL dspk = new PhuKienBLL();
 		KhachHangBLL dskh = new KhachHangBLL();
 		NhanVienBLL dsnv = new NhanVienBLL();
+		HoaDonBLL list = new HoaDonBLL();
 		int key, option, n, m;
 
 		loop: while(true) {
@@ -30,12 +33,13 @@ public class Test {
 					+ "\n5. Tim kiem"
 					+ "\n6. Sap xep danh sach"
 					+ "\n7. Doc/ghi du lieu file"
+					+ "\n8. In phieu thanh toan"
 					+ "\n0. Exit"
 					+ "\n\nNhap lua chon: ");
 			while(true) {
 				try {
 					key = Integer.parseInt(sc.nextLine());
-					if (key < 0 || key > 7) {
+					if (key < 0 || key > 8) {
 						System.out.print("Lua chon khong phu hop. Hay lua chon lai: ");
 						continue;
 					}
@@ -88,24 +92,24 @@ public class Test {
 						+ "\n1. Danh sach khach hang"
 						+ "\n2. Danh sach nhan vien"
 						+ "\n3. Danh sach dien thoai"
-						+ "\n4. Danh sach phu kien");
+						+ "\n4. Danh sach phu kien"
+						+ "\n5. Danh sach hoa don");
 				option = Integer.parseInt(sc.nextLine());
 				switch(option) {
 				case 1:
-					ArrayList<KhachHang> tmp1 = dskh.dskh;
-					dskh.hienDanhSach(tmp1);
+					dskh.hienDanhSach();
 					break;
 				case 2:
-					ArrayList<NhanVien> tmp2 = dsnv.dsnv;
-					dsnv.hienDanhSach(tmp2);
+					dsnv.hienDanhSach();
 					break;
 				case 3:
-					ArrayList<DienThoai> tmp3 = dsdt.dsdt;
-					dsdt.hienDanhSach(tmp3);
+					dsdt.hienDanhSach();
 					break;
 				case 4:
-					ArrayList<PhuKien> tmp4 = dspk.dspk;
-					dspk.hienDanhSach(tmp4);
+					dspk.hienDanhSach();
+					break;
+				case 5:
+					list.hienDanhSach();
 					break;
 				}
 				break;
@@ -283,6 +287,13 @@ public class Test {
 						break;
 					}
 				}
+				break;
+			case 8:
+				HoaDon temp = new HoaDon();
+				temp.taoHoaDon(dskh, dsnv, dsdt, dspk);
+				list.them(temp);
+				System.out.println(temp.toString());
+				list.ghiFile();
 				break;
 			case 0:
 				System.out.println("Da thoat chuong trinh.");

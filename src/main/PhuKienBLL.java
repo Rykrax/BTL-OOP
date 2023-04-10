@@ -114,7 +114,7 @@ public class PhuKienBLL {
 		});
 	}
 	public void ghiFile(ArrayList<PhuKien> dspk) throws FileNotFoundException, IOException { 
-		FileOutputStream fo = new FileOutputStream("PhuKien.bin");
+		FileOutputStream fo = new FileOutputStream("PhuKien.dat");
 		ObjectOutputStream obw = new ObjectOutputStream (fo);
 		try {
 			for(PhuKien x: dspk) {
@@ -130,7 +130,7 @@ public class PhuKienBLL {
 	}
 	public ArrayList<PhuKien> docfile() throws FileNotFoundException, IOException, ClassNotFoundException
 	{
-		FileInputStream fi =new FileInputStream("PhuKien.bin");
+		FileInputStream fi =new FileInputStream("PhuKien.dat");
 		ObjectInputStream obi = new ObjectInputStream(fi);
 		ArrayList<PhuKien> kp= new ArrayList<>();
 		PhuKien pk= null;
@@ -143,30 +143,12 @@ public class PhuKienBLL {
 
 			}
 		} catch (Exception e) {
-			System.out.println(" File khong ton tai ");
+			System.out.println("File khong ton tai ");
 		} finally {
 			fi.close();
 			obi.close();
 		}
 		return kp;
-	}
-	public PhuKien searchbyname() throws IOException, FileNotFoundException, ClassNotFoundException
-	{
-		Scanner sc= new Scanner(System.in);
-		System.out.print("Nhap vao ten phu kien  : ");
-		String sten=sc.nextLine();
-
-		for(PhuKien x:docfile())
-		{
-			if(x.getTenSP().compareTo(sten)==0)
-			{
-				return x;
-			}
-
-		}
-
-		return null;
-
 	}
 }
 
