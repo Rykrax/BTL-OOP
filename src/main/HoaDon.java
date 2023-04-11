@@ -47,7 +47,7 @@ public class HoaDon implements Serializable {
 		for (int i = 0; i < dsnv.dsnv.size(); i++) {
 			System.out.println(i+1 
 					+ ". " + dsnv.dsnv.get(i).getHoten() 
-					+ " - Ma nhan vien" + dsnv.dsnv.get(i).getMaNV());
+					+ " - Ma nhan vien: " + dsnv.dsnv.get(i).getMaNV());
 		}
 		System.out.print("Chon vi tri nhan vien tao hoa don theo danh sach: ");
 		while(true) {

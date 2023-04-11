@@ -3,7 +3,7 @@ package main;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Person implements Serializable {
+public abstract class Person implements Serializable {
 	private String hoten;
 	private String gt;
 	private String cmnd;
@@ -33,7 +33,7 @@ public class Person implements Serializable {
 			return s;
 		} else return hoten;
 	}
-	public void  nhap() {
+	public void nhap() {
 		Scanner sc = new Scanner (System.in);
 		System.out.print("Ho va ten: ");
 		this.hoten=sc.nextLine();

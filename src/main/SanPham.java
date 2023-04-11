@@ -5,7 +5,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class SanPham implements Serializable{
+public abstract class SanPham implements Serializable{
 	protected String tenSP;
 	protected int namSX;
 	protected int soLuong;
