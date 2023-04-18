@@ -45,7 +45,8 @@ public class PhuKienBLL {
 				System.out.println("Them thanh cong");
 			}
 		} else {
-			PhuKien pk = new PhuKien(name);
+			PhuKien pk = new PhuKien();
+                                                                    pk.setTenSP(name);
 			pk.nhap();
 			dspk.add(pk);
 		}

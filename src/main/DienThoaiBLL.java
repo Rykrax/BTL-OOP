@@ -39,7 +39,8 @@ public class DienThoaiBLL {
 				System.out.println("Them thanh cong");
 			}
 		} else {
-			DienThoai dt = new DienThoai(name);
+			DienThoai dt = new DienThoai();
+                                                                    dt.setTenSP(name);
 			dt.nhap();
 			dsdt.add(dt);
 		}

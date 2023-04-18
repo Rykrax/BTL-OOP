@@ -13,9 +13,10 @@ public class PhuKien  extends SanPham implements Serializable{
     public PhuKien() {
         super();
     }
-    public PhuKien(String name) {
-    	this.tenSP = name;
-    }
+//    public PhuKien(String name) {
+//    	this.tenSP = name;
+//            
+//    }
     
     @Override
     public void nhap() {

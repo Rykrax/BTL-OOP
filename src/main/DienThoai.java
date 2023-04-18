@@ -8,11 +8,13 @@ public class DienThoai extends SanPham implements Serializable {
 	public DienThoai() {
 		super();
 	}
-	
-	public DienThoai(String name) {
-		this.tenSP = name;
-	}
+//	
+//	public DienThoai(String name) {
+//		this.tenSP = name;
+//	}
 
+                        
+                        
 	public String getLoaiDT() {
 		return loaiDT;
 	}

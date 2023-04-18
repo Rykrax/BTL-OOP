@@ -15,7 +15,7 @@ public class HoaDon implements Serializable {
 	private HashMap<SanPham,Integer> sp = new HashMap<>();
 
 	public HoaDon() {
-
+//a+
 	}
 	public void taoHoaDon(KhachHangBLL dskh, NhanVienBLL dsnv, DienThoaiBLL dsdt, PhuKienBLL dspk) {
 		LocalDateTime data = LocalDateTime.now();

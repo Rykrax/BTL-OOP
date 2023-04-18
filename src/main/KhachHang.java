@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class KhachHang extends Person implements Serializable{
 	private String maKH;
 
-	public KhachHang() {
+	public KhachHang() { 
 		super();
 	}
 

@@ -49,7 +49,7 @@ public class KhachHangBLL {
 
 	public void xoa() {
 		Scanner sc = new Scanner(System.in); 
-		System.out.println("Nhap ma khach hang: ");
+		System.out.println(" Nhap ma khach hang: ");
 		String maKH;
 		maKH = sc.nextLine();
 		int index = check(maKH);
@@ -142,4 +142,5 @@ public class KhachHangBLL {
 		}
 		return kq;
 	}
+      
 }

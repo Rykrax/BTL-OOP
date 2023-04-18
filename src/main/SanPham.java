@@ -6,10 +6,10 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class SanPham implements Serializable{
-	protected String tenSP;
-	protected int namSX;
-	protected int soLuong;
-	protected double coin;
+	private String tenSP;
+	private int namSX;
+	private int soLuong;
+	private double coin;
 
 
 	public SanPham() {
