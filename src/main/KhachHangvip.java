@@ -4,13 +4,14 @@
  */
 package main;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author Admin
  */
-public class KhachHangvip extends KhachHang{
+public class KhachHangvip extends KhachHang implements Serializable{
     private long billtoday;
     private String rankvip;
     private int dtl;

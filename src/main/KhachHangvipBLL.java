@@ -4,6 +4,12 @@
  */
 package main;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -64,6 +70,13 @@ public class KhachHangvipBLL {
             System.out.println(x.toString());
         }
     }
+    public void hienfile() throws IOException
+    {
+        for(KhachHangvip x:docfile())
+        {
+            System.out.println(x.toString());
+        }
+    }
     public void sxbyname()
     {
         Collections.sort(arr, new Comparator<KhachHangvip>(){
@@ -103,11 +116,46 @@ public class KhachHangvipBLL {
         }
         else System.out.println(arr.get(checkma(ma)).toString());
     }
+    public void ghifile() throws FileNotFoundException, IOException{
+        FileOutputStream fo=new FileOutputStream("KhachHangvip.dat");
+        ObjectOutputStream oos = new ObjectOutputStream(fo) ;
+        try {
+            for(KhachHangvip x:arr)
+            {
+                oos.writeObject(x);
+            }
+        } catch (Exception e) {
+            System.out.print("Ghi File bi loi  ");
+            
+        } finally {
+            fo.close();
+            oos.close();
+        }
+    }
+    public ArrayList<KhachHangvip> docfile() throws FileNotFoundException, IOException
+    {
+        ArrayList<KhachHangvip> list= new ArrayList<>();
+        FileInputStream fi = new FileInputStream("KhachHangvip.dat");
+        ObjectInputStream ooi = new ObjectInputStream(fi);
+        try {
+            while(fi.available()>0)
+            {
+                list.add((KhachHangvip)ooi.readObject());
+            }
+        } catch (Exception e) {
+            System.out.println("Doc file loi!");
+        } finally {
+            fi.close();
+            ooi.close();
+        }
+        return list;
+    }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         KhachHangvipBLL a= new KhachHangvipBLL();
         a.nhapttkhachvip();
-        a.hien();
-        a.search();
+       a.ghifile();
+       a.hienfile();
+       
     }
 }
